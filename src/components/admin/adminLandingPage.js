@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import SearchBar from './searchBar/searchBar'
 import { UserContext } from '../../contexts/UserContext'
+import PaymentForm from './Finance/payment'
+import DailyFeeCollection from './Finance/dailyFeeCollection'
 
 
 export default function AdminLandingPage() {
@@ -8,6 +10,7 @@ export default function AdminLandingPage() {
     const [status, setStatus ] = useState('')
 
     const [userHereRole, setUserHereRole] = useState('')
+    const [userHere, setUserHere] = useState('')
     const {users} = useContext(UserContext)
     
 
@@ -15,11 +18,26 @@ export default function AdminLandingPage() {
         const userhere = users.find(user => user.code === code)
         if (userhere !== undefined){
             setStatus('success')
+            setUserHere(userhere)
             setUserHereRole(userhere.role)
         } else{
             setStatus('failure')
             setUserHereRole('')
         }
+    }
+
+    function studentNeed(){
+        
+        return(
+            <PaymentForm user={userHere} Users = {users}/>
+        )
+    }
+
+    function parentNeed(){
+        
+        return(
+            <PaymentForm user={userHere} Users = {users}/>
+        )
     }
 
     return (
@@ -35,22 +53,9 @@ export default function AdminLandingPage() {
                 </div>
             </div>
 
-            {status ==='success'? userHereRole ==='Student'? <p> Student needs</p>:null:null}
-            <div>
-                Hidding payment form
-                <br/>
-                Hidding Id card generation form
-                <br/>
-                Attendance history
-                <br/>
-                Payment history
-                <br/>
-                Kids information
-                <br/>
-                Parent information
-            </div>
-            
-            
+            {status ==='success'? userHereRole ==='Student'? <div>{studentNeed()}</div>:null:null}
+            {status ==='success'? userHereRole ==='Parent'? <div>{parentNeed()}</div>:null:null}
+                        
             { status === ''?
                 
                 <div>
@@ -75,7 +80,9 @@ export default function AdminLandingPage() {
                     <div className='box'>
                         <p className="title">
                             Payment update
+
                         </p>
+                        <DailyFeeCollection/>
                     </div>
                 </div>
                 <div className='column is-6'>

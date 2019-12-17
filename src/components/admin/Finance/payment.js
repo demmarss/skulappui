@@ -20,8 +20,10 @@ useEffect(() => {
     let result = getFamily()
     setFamily(result)
     let parent = result.find(x => x.role === "Parent")
-    const allParentPayment = payments.filter(payment => payment.parentId == parent._id)
+    const allParentPayment = payments.filter(payment => payment.parentId === parent._id)
     setPaymentHistory(allParentPayment)
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
 useEffect(() => {
@@ -36,6 +38,7 @@ useEffect(() => {
         setShowPaymentForm(true)
         setPaymentStatus('failure')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [payments]);
 
 
@@ -43,9 +46,9 @@ const month1 = ['January', 'February', 'March', 'April']
 const month2 = ['May', 'June', 'July', 'August']
 const month3 = ['September', 'October', 'November', 'December']
 const allMonths = [
-    ... month1,
-    ... month2,
-    ... month3
+    ...month1,
+    ...month2,
+    ...month3
 ]
 
 
@@ -65,7 +68,7 @@ function handleSubmitPayment() {
 }
 
 function checkPaymentStatus() { // Now check if the data is present in the payments state
-    const allParentPayment = payments.filter(payment => payment.parentId == getParent()._id)
+    const allParentPayment = payments.filter(payment => payment.parentId === getParent()._id)
     // check this month payment
     const isThisMonthPaidFor = allParentPayment.filter(x => x.monthPaidFor === monthPaidFor)
 
@@ -120,16 +123,16 @@ function getFamily() {
         family.push(parent)
         let kids = getKids(parent._id)
         family = [
-            ... family,
-            ... kids
+            ...family,
+            ...kids
         ]
     } else if (user.role === "Parent") { // if parent, getKids
         let kids = getKids(user._id)
 
         family.push(user)
         family = [
-            ... family,
-            ... kids
+            ...family,
+            ...kids
         ]
     } else {
         family = []

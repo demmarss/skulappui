@@ -3,6 +3,7 @@ import {UserContext} from '../../../contexts/UserContext'
 import SearchBar from '../searchBar/searchBar'
 
 export default function MySetUp({SetSuccess}) {
+
     const [code, setCode] = useState('')
     const [name, setName] = useState('')
     const [role, setRole] = useState('')
@@ -13,13 +14,13 @@ export default function MySetUp({SetSuccess}) {
     const [parentSearchstatus, setParentSearchStatus] = useState('')
     const [parent, setParent ] = useState('')
 
-    const {creatingUser, users} = useContext(UserContext)
+    const {creatingUser, users } = useContext(UserContext)
     
     function handleChangeName(e) {
         setName(e.target.value)
     }
     function handleChangeCode(e) {
-        setCode(e.target.value)
+            setCode(e.target.value)
     }
     function handleSetMobile(e) { // if Student, search for parent, then use the parent info
         setMobile(e.target.value)
@@ -28,8 +29,6 @@ export default function MySetUp({SetSuccess}) {
         // search for parentCode
         const parents = users.filter(user => user.role === "Parent")
         const parent = parents.find(user => user.code === code )
-
-        console.log("PArent", parent)
 
         if (parent !== undefined){
             setParent(parent)
@@ -55,8 +54,20 @@ export default function MySetUp({SetSuccess}) {
 
 
     function handleSubmit() {
+        const extraCode = users.length
+        let realCode = extraCode+code
+
+        if (role === 'Parent'){
+            realCode = '001'+realCode
+        }else if (role === 'Student'){
+            realCode = ('101'+realCode)
+        }else {
+            realCode = '000'+code+extraCode
+        }
+
+        
         let user = {
-            code,
+            code: realCode,
             name,
             role,
             grade,

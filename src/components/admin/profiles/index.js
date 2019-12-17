@@ -4,7 +4,6 @@ import SearchBar from '../searchBar/searchBar'
 import ClassList from './classList'
 import ParentList from './parentList'
 import StaffList from './staffList'
-import OtherList from './otherList'
 import MyProfile from './profile'
 
 export default function Profile() {
@@ -52,8 +51,13 @@ function handleSearch(code){
     return (userBaseOnRole)
  }
 
-    const profileOptions = ['Class', 'Parents', 'Staff', 'Others']
+ function getStudentParent(parentId){
+    const allParents = getUserBaseOnRole('Parent')
+    const studentParent = allParents.find(x=> x._id === parentId)
+    return (studentParent)
+ }
 
+    const profileOptions = ['Class', 'Parents', 'Staff', 'Others']
 
     return (
         <div>
@@ -65,7 +69,6 @@ function handleSearch(code){
                     <section className="section">
                         <div className="container">
                             <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
-
                             {
                         status ==='success'? 
                         <MyProfile user={userHere}/>:null
@@ -83,11 +86,10 @@ function handleSearch(code){
                         </div>
                     </section>
 
-                    {option === 'Class'? <ClassList GetAllClasses= {getAllClasses} GetAllStudents={getAllStudents}/>:null}
+                    {option === 'Class'? <ClassList GetAllClasses= {getAllClasses} GetAllStudents={getAllStudents} GetStudentParent = {getStudentParent} />:null}
                     {option === 'Parents'? <ParentList ParentList= {getUserBaseOnRole} />:null}
                     {option === 'Staff'? <StaffList StaffList= {getUserBaseOnRole}/>:null}
-                    {option === 'Others'? <OtherList OtherList= {getUserBaseOnRole}/>:null}
-                    
+                                        
                 </div>
             </article>
 

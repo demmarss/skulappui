@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import MyProfile from './profile'
 
-export default function ClassList({GetAllClasses, GetAllStudents}) {
+export default function ClassList({GetAllClasses, GetAllStudents, GetStudentParent}) {
     
 
     const [students, setStudents] = useState([])
@@ -42,7 +42,7 @@ export default function ClassList({GetAllClasses, GetAllStudents}) {
                 <div className='column is-5'>
                     {
                         userHere !== ''? 
-                        <MyProfile user={userHere}/>:null
+                        <MyProfile user={userHere} GetMyParent= {GetStudentParent}/>:null
                     }
                     
                 </div>

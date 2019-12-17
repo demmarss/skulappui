@@ -1,51 +1,69 @@
 import React from 'react'
 
-export default function MyProfile({user}) {
+export default function MyProfile({
+    user,
+    GetMyParent = {}
+}) {
     return (
         <div>
-            My profile here
             <article className="media">
                 <figure className="media-left">
                     <p className="image is-128x128">
-                        {/* <img src=""/> */}
-                    </p>
+                        {/* <img src=""/> */} </p>
                 </figure>
                 <div className="media-content">
                     <div className="content">
 
-                        <p>
-                            <strong>{
-                                user.name
-                            }</strong>
-                        </p>
+                        <div className="columns">
+                            <div className='column'>
+                                <p>
+                                    <strong>{
+                                        user.name
+                                    }</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="columns">
+                            <div className='column'>
+                                <p>
 
-                        <p>
-                            Role:
-                            <small>{
-                                user.role
-                            }</small>
-                        </p>
+                                    Role:
+                                </p>
 
-                        <p>
-                            Code:
-                            <small>{
-                                user.code
-                            }</small>
-                        </p>
+                            </div>
+                            <div className='column'>
+                                <small>{
+                                    user.role
+                                }</small>
+                            </div>
+                        </div>
+                        <div className="columns">
+                            <div className='column'>
+                                <p>
+
+                                    Code:
+                                </p>
+
+                            </div>
+                            <div className='column'>
+                                <small>{
+                                    user.code
+                                }</small>
+                            </div>
+                        </div>
 
                         {
-                        user.role === 'student' ? <p>Parent Code:
-                            <small>{
-                                user.parentId
-                            }</small>
-                        </p> : null
-                    }
-
-                        <p>
-                            Some message here</p>
-
-                    </div>
-                    <nav className="level is-mobile">
+                        user.role === 'Student' ? <div className="columns">
+                            <div className='column'>
+                                Parent Code:
+                            </div>
+                            <div className='column'>
+                                {
+                                GetMyParent(user.parentId).code
+                            } </div>
+                        </div> : null
+                    } </div>
+                    {/* <nav className="level is-mobile">
                         <div className="level-left">
                             <p className="button level-item">
                                 Delete
@@ -61,8 +79,7 @@ export default function MyProfile({user}) {
                                 Print Id-Card
                             </p>
                         </div>
-                    </nav>
-                </div>
+                    </nav> */} </div>
             </article>
         </div>
     )
