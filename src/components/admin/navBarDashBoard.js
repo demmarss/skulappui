@@ -1,12 +1,31 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
-export default function NavBarDashBoard() {
+export default function NavBarDashBoard({SetStatus, SourcePage }) {
+
+    function handleClick() {
+        var burger = document.querySelector('.burger')
+        var nav = document.querySelector('#' + burger.dataset.target);
+        burger.classList.toggle('is-active')
+        nav.classList.toggle('is-active');
+
+    }
+const navOptions = [
+    {
+        Home: '/',
+        Timer_Attendance: 'timer',
+        Learning_Cycle: 'lcycle',
+        Pick_Up: '/pickUp'
+
+    }
+]
 
     return (
         <nav aria-label="main navigation" className="navbar is-dark" role="navigation">
             <div className="navbar-brand">
-                <p aria-expanded="false" aria-label="menu" className="navbar-burger burger" data-target="navbarBasicExample" role="button">
+                <p aria-expanded="false" aria-label="menu" className="navbar-burger burger" data-target="navbarBasicExample" role="button"
+                    onClick={handleClick}>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -15,18 +34,19 @@ export default function NavBarDashBoard() {
 
             <div className="navbar-menu" id="navbarBasicExample">
                 <div className="navbar-start">
-                    <a className="navbar-item" href='/'>
+
+                    <Link className='button is-success' to='/'>
                         Home
-                    </a>
-                    <a className="navbar-item" href='/timer'>
-                        Timer/Attendance
-                    </a>
-                    <a className="navbar-item" href='/lcycle'>
-                        Learning Cycle
-                    </a>
-                    <a className="navbar-item" href='/pickUp'>
-                        Pick Up
-                    </a>
+                    </Link>
+                    <Link className='button is-warning' to='/timer'>
+                        Timer_Attendance
+                    </Link>
+                    <Link className='button is-info' to='/lcycle'>
+                        Learning_Cycle
+                    </Link>
+                    <Link className='button is-success' to='/pickUp'>
+                        Pick_Up
+                    </Link>
                 </div>
             </div>
         </nav>

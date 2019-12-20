@@ -9,6 +9,7 @@ import Admin from '../src/components/admin';
 import Lcycle from './components/lcycle';
 import LcycleContextProvider from './contexts/LcycleContext';
 import PaymentContextProvider from './contexts/PaymentContext';
+import PickUp from './components/PickUp'
 
 function App() {
     return (
@@ -27,6 +28,8 @@ function App() {
                                 component={Admin}/>
                             <Route exact path="/lcycle"
                                 component={Lcycle}/>
+                                <Route exact path="/pickup"
+                                component={PickUp}/>
 
 
                         </RecordContextProvider>

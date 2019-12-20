@@ -15,8 +15,8 @@ export default function SearchBar({Search, Status, SetStatus}) {
         if (code === "") {
             return alert("Kindly fill in the code")
         }
-
         Search(code)
+        setCode('')
     }
 
     function handleReset(){

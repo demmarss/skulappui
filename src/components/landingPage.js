@@ -12,14 +12,15 @@ export default function LandingPage() {
         nav.classList.toggle('is-active');
 
     }
+    
 
     return (
         <section className="hero is-info is-medium">
+            
             <div className="hero-head">
                 <nav className="navbar">
                     <div className="container">
                         <div className="navbar-brand">
-
                             <span className="navbar-burger burger" data-target="navbarMenuHeroB"
                                 onClick={handleClick}>
                                 <span></span>
@@ -62,7 +63,7 @@ export default function LandingPage() {
             <div className="hero-body">
                 <div className="container has-text-centered">
                     <h1 className="title is-1">
-                        OlisticLMS+
+                        OlisticLMS+ 
                     </h1>
                     <p className="subtitle">
                         We offer all you need to manage your school & engage your students
@@ -90,7 +91,7 @@ export default function LandingPage() {
                         <div className='column'>
                             <div className='box has-background-info'>
                                 <p className="button is-inverted is-large">
-                                    <Link to='/'>
+                                    <Link to='/pickup'>
                                         PickUp App
                                     </Link>
                                 </p>

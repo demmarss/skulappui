@@ -15,14 +15,14 @@ export default function Admin() {
     return (
         <div>
 
-            <NavBarDashBoard/>
+            <NavBarDashBoard SetStatus={setDisplay}/>
             <div className='columns'>
                 <div className='column is-2'>
-                    <SideAdminBar SetDisplay={setDisplay}/>
+                    <SideAdminBar SetDisplay={setDisplay} SourcePage = 'Admin'/>
                 </div>
                 <div className='column is-10'>
 
-                    {display === '/'? <AdminLandingPage/>:null}
+                    {display === ''? <AdminLandingPage/>:null}
                     {
                     display === 'setUp' ? <SetUp/>: null
                 }

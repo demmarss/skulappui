@@ -26,14 +26,6 @@ function handleSearch(code){
     }
 }
 
-
-    // function getUserDetail(userId) {
-
-    //     // get all records
-    //     // filter with userI
-    //     // return array and set it to userRecord
-    // }
-
     function getAllClasses(){
     
         const classList = ['Class 1', 'Class 2', 'Class 3', 'Class 4']

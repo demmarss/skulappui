@@ -16,7 +16,7 @@ export default function SideAdminBar({SetDisplay}){
             <h1 className="title ">Side bar</h1>
             <div className='column is-12'>
                             <div className='button is-large is-fullwidth' onClick={
-                                () => SetDisplay('/')
+                                () => SetDisplay('')
                         }>
                                 Admin
                             </div>
