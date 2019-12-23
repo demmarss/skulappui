@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SuccessMessage (){
+export default function SuccessMessage ({Reset}){
     return(
         <div>
             <article className="message is-success">
@@ -10,6 +10,7 @@ export default function SuccessMessage (){
                 <div className="message-body">
                     Your search is successful with the code you provided
                 </div>
+                 
             </article>
         </div>
     )

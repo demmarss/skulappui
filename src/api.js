@@ -63,3 +63,18 @@ export async function joinLcycle(userId) {
     const response = await axios.post(`/payments`, userId);
     return response.data;
   }
+
+    // Get all payments
+    export async function getExpenses() {
+      const response = await axios.get(`/expenses`);
+       return response.data;
+    }
+     
+    
+    // Create payment
+    export async function createExpenses(expense) {
+      console.log('...api', expense)
+      const response = await axios.post(`/expenses`, expense);
+
+      return response.data;
+    }

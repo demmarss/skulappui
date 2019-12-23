@@ -7,84 +7,89 @@ import StaffList from './staffList'
 import MyProfile from './profile'
 
 export default function Profile() {
-    const [option, setOption ] = useState('')
-    const [status, setStatus ] = useState('')
-    const [userHere, setUserHere ] = useState('')
+    const [option, setOption] = useState('')
+    const [status, setStatus] = useState('')
+    const [userHere, setUserHere] = useState('')
 
     const {users} = useContext(UserContext)
- 
-function handleSearch(code){
-    const userhere2 = users.find(user => user.code === code)
-    if (userhere2 !== undefined){
-        setStatus('success')
-        setUserHere(userhere2)
 
-    } else{
-        setStatus('failure')
-        setUserHere('')
-        
+    function handleSearch(code) {
+        const userhere2 = users.find(user => user.code === code)
+        if (userhere2 !== undefined) {
+            setStatus('success')
+            setUserHere(userhere2)
+
+        } else {
+            setStatus('failure')
+            setUserHere('')
+
+        }
     }
-}
 
-    function getAllClasses(){
-    
+    function getAllClasses() {
+
         const classList = ['Class 1', 'Class 2', 'Class 3', 'Class 4']
         return(classList)
     }
 
-    function getAllStudents(grade){
-        const studentList = users.filter(student=> student.grade === grade)
-        return (studentList)
+    function getAllStudents(grade) {
+        const studentList = users.filter(student => student.grade === grade)
+        return(studentList)
 
- }
+    }
 
- function getUserBaseOnRole(role){
-    const userBaseOnRole = users.filter(user=> user.role === role)
-    return (userBaseOnRole)
- }
+    function getUserBaseOnRole(role) {
+        const userBaseOnRole = users.filter(user => user.role === role)
+        return(userBaseOnRole)
+    }
 
- function getStudentParent(parentId){
-    const allParents = getUserBaseOnRole('Parent')
-    const studentParent = allParents.find(x=> x._id === parentId)
-    return (studentParent)
- }
-
-    const profileOptions = ['Class', 'Parents', 'Staff', 'Others']
+    function getStudentParent(parentId) {
+        const allParents = getUserBaseOnRole('Parent')
+        const studentParent = allParents.find(x => x._id === parentId)
+        return(studentParent)
+    }
 
     return (
         <div>
-            <article className="message is-success">
-                <div className="message-header">
-                    <p className="title">Profile</p>
+            <p className="title">Profile</p>
+            <div className="container">
+                <div className="tabs is-centered">
+                    <br/><br/>
+                    <ul>
+                        <li className="button is-large"
+                            onClick={
+                                () => setOption('Class')
+                        }>Class</li>
+                        <li className="button is-large"
+                            onClick={
+                                () => setOption('Parents')
+                        }>Parents</li>
+                        <li className="button is-large"
+                            onClick={
+                                () => setOption('Staff')
+                        }>Staff</li>
+                        <li className="button is-large"
+                            onClick={
+                                () => setOption('Others')
+                        }>Others</li>
+                    </ul>
                 </div>
-                <div className="message-body">
-                    <section className="section">
-                        <div className="container">
-                            <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
-                            {
-                        status ==='success'? 
-                        <MyProfile user={userHere}/>:null
-                    }
+                <SearchBar Search={handleSearch}
+                    Status={status}
+                    SetStatus={setStatus}/> {
+                status === 'success' ? <MyProfile user={userHere}/> : null
+            } </div>
 
-                            <div className="columns">
-                                {
-                                profileOptions.map(option => <div className='column' key={option}>
-                                    <div className='box' onClick={()=>setOption(option)}>
-                                        <p className='title is-4'>
-                                            {option}</p>
-                                    </div>
-                                </div>)
-                            } </div>
-                        </div>
-                    </section>
-
-                    {option === 'Class'? <ClassList GetAllClasses= {getAllClasses} GetAllStudents={getAllStudents} GetStudentParent = {getStudentParent} />:null}
-                    {option === 'Parents'? <ParentList ParentList= {getUserBaseOnRole} />:null}
-                    {option === 'Staff'? <StaffList StaffList= {getUserBaseOnRole}/>:null}
-                                        
-                </div>
-            </article>
-
-        </div>
+            {
+            option === 'Class' ? <ClassList GetAllClasses={getAllClasses}
+                GetAllStudents={getAllStudents}
+                GetStudentParent={getStudentParent}/> : null
+        }
+            {
+            option === 'Parents' ? <ParentList ParentList={getUserBaseOnRole}/> : null
+        }
+            {
+            option === 'Staff' ? <StaffList StaffList={getUserBaseOnRole}/> : null
+        } </div>
     )
 }

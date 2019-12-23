@@ -23,14 +23,14 @@ export default function DailyFeeCollection (){
 
 
 
-    const month1 = ['January', 'February', 'March', 'April']
-const month2 = ['May', 'June', 'July', 'August']
-const month3 = ['September', 'October', 'November', 'December']
-const allMonths = [
-    ...month1,
-    ...month2,
-    ...month3
-]
+//     const month1 = ['January', 'February', 'March', 'April']
+// const month2 = ['May', 'June', 'July', 'August']
+// const month3 = ['September', 'October', 'November', 'December']
+// const allMonths = [
+//     ...month1,
+//     ...month2,
+//     ...month3
+// ]
 
 
     return(

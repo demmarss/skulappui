@@ -37,26 +37,17 @@ export default function ParentPU (){
 
     return(
         <div>  
-            
-  <div className="container">
-  
-    <div className="box">
-    <h1 className='title'>Parent Pick Up</h1>
     <div className='columns'>
-            <div className='column is-half'>
-            Implement search bar here
+            <div className='column'>
             <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
-
             </div>
         </div>
-
         {/* If search is successfull */}
         {status === 'success'? 
         <div className='columns'>
             <div className='column'>
            <p className='title'> Parent info </p>
             {parent !== undefined? <p>{parent.name}</p>:null}
-
             </div>
             <div className='column'>
             <p className='title'>Kids information</p>
@@ -66,15 +57,6 @@ export default function ParentPU (){
                 <p className='button is-danger is-rounded' onClick={handleInitiatePickUp}> Confirm </p>
             </div>
         </div>:null}
-
-
-      <p className="title">
-      
-      
-      </p>
-    </div>
-  </div>
-
         </div>
     )
 }

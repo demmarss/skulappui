@@ -11,15 +11,6 @@ export default function NavBarDashBoard({SetStatus, SourcePage }) {
         nav.classList.toggle('is-active');
 
     }
-const navOptions = [
-    {
-        Home: '/',
-        Timer_Attendance: 'timer',
-        Learning_Cycle: 'lcycle',
-        Pick_Up: '/pickUp'
-
-    }
-]
 
     return (
         <nav aria-label="main navigation" className="navbar is-dark" role="navigation">

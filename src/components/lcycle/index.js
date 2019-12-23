@@ -3,7 +3,6 @@ import {
     Container,
     Jumbotron,
     Button,
-    Navbar,
 } from 'react-bootstrap'
 import JoinLcycle from './joinLcycle';
 import CreateLcycle from './createLcycle';
@@ -39,9 +38,6 @@ export default function Lcycle() {
 
     return (
         <Container>
-            <Navbar bg="light" expand="lg" variant="light">
-                <Navbar.Brand href="/">Home</Navbar.Brand>
-            </Navbar>
             <Jumbotron>
                 <h1>Learning Cycle App
                 </h1>

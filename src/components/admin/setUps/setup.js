@@ -6,8 +6,8 @@ export default function MySetUp({SetSuccess}) {
 
     const [code, setCode] = useState('')
     const [name, setName] = useState('')
-    const [role, setRole] = useState('')
-    const [grade, setGrade] = useState('')
+    const [role, setRole] = useState('Select role')
+    const [grade, setGrade] = useState('Select grade')
     const [parentId, setParentId] = useState('')
     const [mobile, setMobile] = useState('')
     const [address, setAddress] = useState('')
@@ -97,19 +97,14 @@ export default function MySetUp({SetSuccess}) {
     const gradeOptions = ['Class 1', 'Class 2', 'Class 3', 'Class 4']
 
     return (
-        <article className="message">
-            <div className="message-header">
-                <p>Set Up</p>
-
-            </div>
-            <div className="message-body">
-
+        <div>
+                <p className='title'>Set Up</p>
                 <div className='columns'>
-                    <div className='column is-4'>
+                    <div className='column is-2'>
 
                         <div className="navbar-item has-dropdown is-hoverable">
-                            <p className="navbar-link button is-warning title is-5">
-                                Who do you want to register?
+                            <p className="navbar-link button title is-5">
+                                {role}
                             </p>
                             <div className="navbar-dropdown">
                                 {
@@ -124,15 +119,8 @@ export default function MySetUp({SetSuccess}) {
                         </div>
 
                     </div>
-                    <div className='column is-3'>
-                        {
-                        role !== '' ? <p className='title is-4'>Role : {role}</p> : null
-                    } </div>
-
-
-                </div>
-
-                {
+                    <div className='column is-10'>
+                    {
                 role === 'Student' ? <React.Fragment> {
                     StudentRequirments()
                 }
@@ -142,6 +130,11 @@ export default function MySetUp({SetSuccess}) {
                 
                 </React.Fragment> : null
             }
+                    </div>
+                    
+                </div>
+
+                
 
                 {
                 role === 'Teacher' ? <React.Fragment> {
@@ -163,16 +156,15 @@ export default function MySetUp({SetSuccess}) {
                 <hr/> {
                 role !== '' ? code !== '' ? name !== '' ? <button className="button is-success"
                     onClick={handleSubmit}>Submit</button> : null : null : null
-            } </div>
+            }
 
-        </article>
+        </div>
     )
 
 
     function StudentRequirments() {
         return (
             <div>
-
                 <div className="columns">
                     <div className="column">
                         <div className="columns is-mobile">
@@ -223,7 +215,7 @@ export default function MySetUp({SetSuccess}) {
 
                                             <div className="navbar-item has-dropdown is-hoverable">
                                                 <p className="navbar-link button is-warning title is-5">
-                                                    Select grade
+                                                    {grade}
                                                 </p>
                                                 <div className="navbar-dropdown">
                                                     {
@@ -237,10 +229,6 @@ export default function MySetUp({SetSuccess}) {
                                                 } </div>
                                             </div>
                                         </div>
-                                        <div className='column is-5'>
-                                            {
-                                            role !== '' ? <p className='title is-4'>Grade : {grade}</p> : null
-                                        } </div>
                                     </div>
                                 </React.Fragment> : null
                             } </div>

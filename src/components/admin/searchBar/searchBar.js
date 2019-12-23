@@ -5,6 +5,7 @@ import FailureMessage from './failureMessage'
 export default function SearchBar({Search, Status, SetStatus}) {
 
     const [code, setCode] = useState('')
+    const [hide, setHide]=useState(false)
     
     function handleChange(e) {
         setCode(e.target.value)
@@ -16,10 +17,12 @@ export default function SearchBar({Search, Status, SetStatus}) {
             return alert("Kindly fill in the code")
         }
         Search(code)
+        setHide(true)
         setCode('')
     }
 
     function handleReset(){
+        setHide(false)
         setCode('')
         SetStatus('')
         
@@ -27,30 +30,26 @@ export default function SearchBar({Search, Status, SetStatus}) {
 
     return (
         <div>
+            {!hide? 
+            <React.Fragment>
             <input className="input"
                 type='text'
                 value={code}
                 placeholder='Enter code'
                 onChange={handleChange}/>
 
-            <p className="button is-large is-success"
+            <p className="button is-medium is-success"
                 disabled={
                     code === ""
                 }
                 onClick={handleSearch}>Search Code
             </p>
-
-            {Status === 'success'? <p className="button is-large is-warning is-inverted"
-                onClick={handleReset}>Reset
+            </React.Fragment>: null}
+            <p className="button is-medium is-warning is-inverted"
+                onClick={handleReset}>Search again
             </p>
-            
-            :null}
-
-
-            
-
-            {Status === 'success'? <SuccessMessage/>:null}
-            {Status === 'failure'? <FailureMessage/>:null}
+            {Status === 'success'? <SuccessMessage Reset={handleReset}/>:null}
+            {Status === 'failure'? <FailureMessage Reset={handleReset}/>:null}
 
         </div>
     )

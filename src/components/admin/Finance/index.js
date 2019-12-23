@@ -1,7 +1,9 @@
 import React, {useContext, useState} from 'react'
 import PaymentForm from './payment'
 import SearchBar from '../searchBar/searchBar'
-import { UserContext } from '../../../contexts/UserContext'
+import {UserContext} from '../../../contexts/UserContext'
+import Expenses from './expenses'
+import ExpensesForm from './expenseForm'
 
 export default function Finance() {
     const [status, setStatus] = useState('')
@@ -23,17 +25,43 @@ export default function Finance() {
     }
 
     return (
-        <div>
-            Finance {/* <Income/>
+    <div className='container'>
+        <h1 className='title' > Finance</h1> {/* <Income/>
                 <Expenses/>
                 <CurrentBalance/> */}
-            <SearchBar Search={handleSearch}
-                Status={status}
-                SetStatus={setStatus}/> 
-                
-                {status ==='success'? userHere.role ==='Student'? <PaymentForm user={userHere} Users = {users}/>:null:null}
-                {status ==='success'? userHere.role === 'Parent'? <PaymentForm user={userHere} Users = {users}/>:null:null}
+        
+            <div className='columns'>
+                <div className='column is-4'>
+                    <p className='button is-blocked is-warning' onClick={()=> setStatus('newExpenses')}>New expenses</p>
+                </div>
+                <div className='column is-4'>
+                    <p className='button is-blocked is-primary' onClick={()=> setStatus('newPayment')}>New payment</p>
+                </div>
+                <div className='column is-4'>
+                    <p className='button is-blocked is-success' onClick={()=> setStatus('expHistory')}>Expenses History</p>
+                </div>
+            </div>
 
-          </div>
+        
+        <div className='columns'></div>
+    
+
+        {status === 'newExpenses'? <ExpensesForm Status={status} />:null}
+        {status === 'expHistory'? <Expenses Status={status} />:null}
+
+   {status === 'newPayment'? <SearchBar Search={handleSearch}
+        Status={status}
+        SetStatus={setStatus}/>:null}
+
+
+{
+        status === 'success' ? userHere.role === 'Student' ? <PaymentForm user={userHere}
+            Users={users}/> : null : null
+    } {
+        status === 'success' ? userHere.role === 'Parent' ? <PaymentForm user={userHere}
+            Users={users}/> : null : null
+    } 
+    
+    </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function FailureMessage (){
+export default function FailureMessage ({Reset}){
     return(
         <div>
             <article className="message is-danger">
@@ -12,6 +12,7 @@ export default function FailureMessage (){
                     Kindly get the code again
                     Then perform the search again
                 </div>
+               
             </article>
         </div>
     )

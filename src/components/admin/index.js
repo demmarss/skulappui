@@ -3,25 +3,17 @@ import Record from './records'
 import Profile from './profiles'
 import SetUp from './setUps'
 // import Analysis from './analysis'
-import NavBarDashBoard from './navBarDashBoard'
 import AdminLandingPage from './adminLandingPage'
-import SideAdminBar from './sideAdminBar'
 import Finance from './Finance'
+import AdminTab from './adminTab'
 
 export default function Admin() {
 
-    const [display, setDisplay] = useState('/')
+    const [display, setDisplay] = useState('')
 
     return (
-        <div>
-
-            <NavBarDashBoard SetStatus={setDisplay}/>
-            <div className='columns'>
-                <div className='column is-2'>
-                    <SideAdminBar SetDisplay={setDisplay} SourcePage = 'Admin'/>
-                </div>
-                <div className='column is-10'>
-
+        <div className='container'>
+            <AdminTab SetDisplay={setDisplay}/>
                     {display === ''? <AdminLandingPage/>:null}
                     {
                     display === 'setUp' ? <SetUp/>: null
@@ -38,10 +30,6 @@ export default function Admin() {
                  {/* {
                     display === 'academics' ? <Academics/>: null
                 } */}
-                
-                </div>
-            </div>
-
         </div>
     )
 }
