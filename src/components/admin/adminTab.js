@@ -9,6 +9,7 @@ export default function AdminTab ({SetDisplay}){
     <li className="button is-large" onClick={()=>SetDisplay('finance')}>Finance</li>
     <li className="button is-large" onClick={()=>SetDisplay('profile')}>Profile</li>
     <li className="button is-large" onClick={()=>SetDisplay('setUp')}>Set Up</li>
+    <li className="button is-large" onClick={()=>SetDisplay('record')}>Record</li>
   </ul>
 </div>
     )

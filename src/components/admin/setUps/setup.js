@@ -1,23 +1,24 @@
-import React, {useState, useContext} from 'react'
-import {UserContext} from '../../../contexts/UserContext'
+import React, {useState} from 'react'
 import SearchBar from '../searchBar/searchBar'
 
-export default function MySetUp({SetSuccess}) {
+export default function MySetUp({SetSuccess, users, creatUser}) {
 
     const [code, setCode] = useState('')
     const [name, setName] = useState('')
     const [role, setRole] = useState('Select role')
     const [grade, setGrade] = useState('Select grade')
-    const [parentId, setParentId] = useState('')
+    const [parentId, setParentId] = useState('000000000000')
     const [mobile, setMobile] = useState('')
     const [address, setAddress] = useState('')
     const [parentSearchstatus, setParentSearchStatus] = useState('')
     const [parent, setParent ] = useState('')
-
-    const {creatingUser, users } = useContext(UserContext)
+    const [username, setUsername ] = useState('')
     
     function handleChangeName(e) {
         setName(e.target.value)
+    }
+    function handleChangeUsername(e) {
+        setUsername(e.target.value)
     }
     function handleChangeCode(e) {
             setCode(e.target.value)
@@ -54,6 +55,12 @@ export default function MySetUp({SetSuccess}) {
 
 
     function handleSubmit() {
+        if(grade === 'Select grade' && role === 'Student'){
+            alert('please select grade')
+        }
+        if(role==='Select role'){
+            alert('please select role')
+        }
         const extraCode = users.length
         let realCode = extraCode+code
 
@@ -73,9 +80,11 @@ export default function MySetUp({SetSuccess}) {
             grade,
             mobile,
             parentId,
-            address
+            address,
+            username: realCode,
+            password: realCode,
         }
-        creatingUser(user)
+        creatUser(user)
         SetSuccess(true)
         ResetValue()
     }
@@ -87,11 +96,8 @@ export default function MySetUp({SetSuccess}) {
         setGrade('')
         setParentId('')
         setMobile('')
-        setMobile('')
-        setAddress('')
         setAddress('')
         setParentSearchStatus('')
-
     }
     const roleOptions = ['Student', 'Teacher', 'Parent', 'Admin']
     const gradeOptions = ['Class 1', 'Class 2', 'Class 3', 'Class 4']

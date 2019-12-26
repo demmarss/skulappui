@@ -14,35 +14,41 @@ export default function LandingPage() {
                     <p className="subtitle">
                         We offer all you need to manage your school & engage your students
                     </p>
-
                     <div className='columns'>
-                        <div className='column'>
+                        <div className='column is-4'>
                             <Link className='tile title notification is-primary ' to='/timer'>
-                                    Timer App
+                                    Timer
                             </Link>
                         </div>
-                        <div className='column'>
+                        <div className='column is-4'>
                             <Link className='tile title notification is-success ' to='/admin'>
-                                    Admin App
+                                    Admin
                             </Link>
                         </div>
-                        <div className='column'>
+                        <div className='column is-4'>
                             <Link className='tile title notification is-primary ' to='/pickup'>
-                                    PickUp App
+                                    PickUp
                             </Link>
                         </div>
-                        <div className='column'>
-                            <Link className='tile title notification is-primary ' to='/lcycle'>                                
-                                    Learning Cycle                                
-                            </Link>
-                        </div>
-                        <div className='column'>
-                            <Link className='tile title notification is-warning ' to='/'>
-                                    Question App  
-                            </Link>
-                        </div>
-                        
+                                              
                     </div>
+                    <div className='columns'>
+                    <div className='column is-4'>
+                            <Link className='tile title notification is-primary ' to='/lcycle'>                                
+                                    LCycle                                
+                            </Link>
+                        </div> 
+                        <div className='column is-4'>
+                            <Link className='tile title notification is-warning ' to='/question'>
+                                    Question  
+                            </Link>
+                            </div>
+                            <div className='column is-4'>
+                            <Link className='tile title notification is-warning ' to='/myTask'>
+                                    Task  
+                            </Link>
+                        </div>                        
+                        </div>
                 </div>
             </div>
         </section>

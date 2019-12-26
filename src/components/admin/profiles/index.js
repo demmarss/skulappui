@@ -1,17 +1,17 @@
-import React, {useContext, useState} from 'react'
-import {UserContext} from '../../../contexts/UserContext'
+import React, {useState} from 'react'
 import SearchBar from '../searchBar/searchBar'
 import ClassList from './classList'
 import ParentList from './parentList'
 import StaffList from './staffList'
 import MyProfile from './profile'
 
-export default function Profile() {
+export default function Profile({users}) {
+
+    console.log('Users at profile', users)
+    
     const [option, setOption] = useState('')
     const [status, setStatus] = useState('')
     const [userHere, setUserHere] = useState('')
-
-    const {users} = useContext(UserContext)
 
     function handleSearch(code) {
         const userhere2 = users.find(user => user.code === code)
@@ -74,11 +74,19 @@ export default function Profile() {
                         }>Others</li>
                     </ul>
                 </div>
-                <SearchBar Search={handleSearch}
-                    Status={status}
-                    SetStatus={setStatus}/> {
+                <div className="columns is-mobile is-centered">
+                <div className="column is-half">
+                        <p className="title is-4">
+                            Search for records 
+                        </p>
+                    
+                        <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
+                        {
                 status === 'success' ? <MyProfile user={userHere}/> : null
-            } </div>
+            } 
+                </div>
+            </div>
+ </div>
 
             {
             option === 'Class' ? <ClassList GetAllClasses={getAllClasses}

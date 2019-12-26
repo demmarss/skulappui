@@ -1,9 +1,4 @@
 import React, {useState} from 'react'
-import {
-    Container,
-    Jumbotron,
-    Button,
-} from 'react-bootstrap'
 import JoinLcycle from './joinLcycle';
 import CreateLcycle from './createLcycle';
 import LearnMore from './learnMore';
@@ -35,38 +30,38 @@ export default function Lcycle() {
         toggleShowLearnMore(!showLearnMore)
     }
     
-
     return (
-        <Container>
-            <Jumbotron>
-                <h1>Learning Cycle App
-                </h1>
-                <p>
-                    Here you can create a new learning cycle for your students
-                </p>
-                <p>
-                    <Button variant="outline-primary" onClick={handleLearnMore}>Learn more</Button>
-                </p>
-
-                <p>
-                    <Button variant="outline-info"
-                        onClick={
-                            handletoggleShowCreateLC
-                    }>Create a new learning cycle</Button>
-
-                    <Button variant="outline-success"
-                        onClick={
-                            handleJoinLC
-                    }>Join learning cycle</Button>
-                </p>
-
-                {showJoinLC ? <JoinLcycle/>: null }
-
-                {showCreateLC ? <CreateLcycle/>: null} 
-            { showLearnMore? <LearnMore/>:null }
+<div className="columns is-mobile is-centered">
+        <div className="column is-half">
+        <section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+      Learning Cycle App
+      </h1>
+      <h2 class="subtitle">
+      Here you can create a new learning cycle for your students 
+      </h2>
+      <p className='button' onClick={handleLearnMore}>Learn more</p>
             
-            </Jumbotron>
-        </Container>
+                <p className='button' onClick={handletoggleShowCreateLC}>Create a new learning cycle</p>
+
+                <p className='button' onClick={handleJoinLC}>Join learning cycle</p>
+                
+                {showJoinLC ? <JoinLcycle/>: null }
+                {showCreateLC ? <CreateLcycle/>: null} 
+                { showLearnMore? <LearnMore/>:null }
+    </div>
+
+  </div>
+</section>
+                            
+                
+            
+            </div>
+            </div>
+        
+        
 
 
     )

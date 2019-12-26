@@ -2,14 +2,12 @@ import React, {useState, useContext} from 'react'
 import Failure from './failureMessage'
 import Success from './successMessage'
 import {useHistory} from 'react-router-dom'
-import {UserContext} from '../../contexts/UserContext'
 import {RecordContext} from '../../contexts/RecordContext'
 
-export default function NumberPad() {
+export default function NumberPad({users}) {
 
     const [codetyped, setcodetyped] = useState([])
     const [status, setStatus] = useState('')
-    const {users} = useContext(UserContext)
     const {creatingTimeRecord} = useContext(RecordContext)
 
     const history = useHistory();

@@ -36,7 +36,7 @@ export default function MyRecord({UserRecords, User}) {
         <div>
             <section className="section">
                 <div className="container">
-                    <h1 className="title is-1 has-text-black">{User.username} Record </h1>
+                    <h1 className="title is-1 has-text-black">{User.name} Record </h1>
                     <div className="columns">
                         <div className="column is-6 is-offset-3">
                             <table className="table is-striped">

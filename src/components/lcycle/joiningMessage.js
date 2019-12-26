@@ -1,17 +1,14 @@
 import React from 'react'
-import {
-   Alert
-} from 'react-bootstrap'
 
 export default function StatusMessage({status = 'success', Component }) {
     return (
         <div> {
             status === 'success' ? 
-            <Alert variant='success'>
+            <p>
                 You have succesfully {Component+'ed'} a class
-            </Alert> : <Alert variant='warning'>
+            </p> : <p>
                 {Component+'ing'} class is not successful
-            </Alert>
+            </p>
         } </div>
 
     )

@@ -1,16 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import SearchBar from '../admin/searchBar/searchBar'
-import { UserContext } from '../../contexts/UserContext'
 import { emitingToSocket } from '../../webSocket/chat'
 
-export default function ParentPU (){
+export default function ParentPU ({users}){
 
     const [parent, setParent ] = useState(undefined)
     const [kids, setKids ] = useState([])
     const [status, setStatus ] = useState('')
-        
-    const {users} = useContext(UserContext)
- 
 
     function handleSearch(code){
         const userhere2 = users.find(user => user.code === code)
@@ -34,26 +30,32 @@ export default function ParentPU (){
         let kids = users.filter(user=> user.parentId === parentId)
         return kids
     }
-
     return(
         <div>  
-    <div className='columns'>
-            <div className='column'>
-            <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
+    <div className="columns is-mobile is-centered">
+                <div className="column is-half">
+                        <p className="title is-4">
+                            Search for records 
+                        </p>
+                        <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
+                    
+                </div>
             </div>
-        </div>
         {/* If search is successfull */}
         {status === 'success'? 
         <div className='columns'>
             <div className='column'>
            <p className='title'> Parent info </p>
-            {parent !== undefined? <p>{parent.name}</p>:null}
+            {parent !== undefined? <p className='subtitle'>{parent.name}</p>:null}
             </div>
             <div className='column'>
             <p className='title'>Kids information</p>
-                {kids.map(kid=>
-                <p key={kid.code} className='title is-3'> Name: {kid.name}</p>
+            <ul>
+            {kids.map(kid=>
+                <li key={kid.code}> {kid.name}</li>
                 )}
+            </ul>
+                
                 <p className='button is-danger is-rounded' onClick={handleInitiatePickUp}> Confirm </p>
             </div>
         </div>:null}

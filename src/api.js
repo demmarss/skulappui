@@ -40,8 +40,9 @@ export async function getLcycles() {
 
 
 // Create learning cycle
-export async function createLcycle(userId) {
-  const response = await axios.post(`/lcycle`, userId);
+export async function createLcycle(lcycle) {
+  console.log(lcycle)
+  const response = await axios.post(`/lcycle`, lcycle);
   return response.data;
 }
 

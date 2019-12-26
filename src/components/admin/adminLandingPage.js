@@ -1,19 +1,17 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import SearchBar from './searchBar/searchBar'
-import { UserContext } from '../../contexts/UserContext'
+
 import PaymentForm from './Finance/payment'
 import DailyFeeCollection from './Finance/dailyFeeCollection'
 
 
-export default function AdminLandingPage() {
+export default function AdminLandingPage({users}) {
 
     const [status, setStatus ] = useState('')
 
     const [userHereRole, setUserHereRole] = useState('')
     const [userHere, setUserHere] = useState('')
-    const {users} = useContext(UserContext)
     
-
     function handleSearch(code){
         const userhere = users.find(user => user.code === code)
         if (userhere !== undefined){

@@ -1,15 +1,12 @@
-import React, {useContext, useState} from 'react'
+import React, {useState} from 'react'
 import PaymentForm from './payment'
 import SearchBar from '../searchBar/searchBar'
-import {UserContext} from '../../../contexts/UserContext'
 import Expenses from './expenses'
 import ExpensesForm from './expenseForm'
 
-export default function Finance() {
+export default function Finance({users}) {
     const [status, setStatus] = useState('')
     const [userHere, setUserHere] = useState('')
-
-    const {users} = useContext(UserContext)
 
     function handleSearch(code) {
         const userhere2 = users.find(user => user.code === code)

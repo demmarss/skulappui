@@ -4,7 +4,7 @@ import ParentPU from './parentPU'
 import AdminPU from './adminPU'
 import PickUpTab from './pickUpTab'
 
-export default function PickUp () {
+export default function PickUp ({users}) {
     const [status, setStatus ] = useState('')
     const [kidsPickUpList, setKidsPickUpList] = useState([])
 
@@ -30,7 +30,7 @@ export default function PickUp () {
             {status === 'Class 2'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}
             {status === 'Class 3'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}
             {status === 'Class 4'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}
-            {status === 'Admin'? <AdminPU SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}      
+            {status === 'Admin'? <AdminPU SetStatus = {setStatus} KidsPickUpList={kidsPickUpList} users={users}/>: null}      
           
             
 

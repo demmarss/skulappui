@@ -1,42 +1,83 @@
-import React, { useState } from 'react'
-import {
-    Button,
-    InputGroup,
-    FormControl
-} from 'react-bootstrap'
-import StatusMessage from './joiningMessage';
+import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { handleCreateLgroup } from '../actions/learningCycle'
 
+class CreateLCForm extends Component {
 
-export default function CreateLcycle(){
-    const [displayMessage, setDisplayMessage] = useState(false);
-    const [creatingStatus, setCreatingStatus] = useState('');
+    state = {
+        lgtitle: '',
+        successful: false
+      };
+    
+      handleChange = prop => event => {
+        this.setState({ [prop]: event.target.value });
+      };
 
-    function handleCreating(){
-        setDisplayMessage(true)
-        // if success
-        setCreatingStatus('success')
-        
+      handleSubmit = e => {
+        e.preventDefault();
+        const { lgtitle } = this.state;
+        const { dispatch } = this.props;
+    
+        dispatch(handleCreateLgroup(lgtitle));
+
+        this.setState({
+            successful: true,
+            lgtitle: ''
+        })
+      };
+
+      isEmpty() {
+        return this.state.lgtitle === "";
+      }
+
+    render (){
+          const { authedUser } = this.props
+
+        return (
+            <div>
+                {authedUser? 
+                !this.state.successful?
+                <form onSubmit={this.handleSubmit}>
+                    <article className="message is-success">
+                        <div className="message-header">
+                            <p>Create L-Cycle</p>
+                        </div>
+                        <div className="message-body">
+                            <div className="field">
+                                <p className="control has-icons-left">
+                                    <input className="input" type="text" onChange={this.handleChange('lgtitle')} placeholder="Enter L-cycle title"/>
+                                </p>
+                            </div>
+                            <div className="field">
+                                <p className="control">
+                                    <button type='submit' className="button is-warning" disabled={this.isEmpty()}>
+                                    Click to Create
+                                    </button>
+                                </p>
+                            </div>  
+                        </div>
+                    </article>
+                </form>: null
+                :
+                <p className="box has-background-grey-lighter has-text-danger">LogIn or SignUp to CREATE learning group </p>
+                }
+            {this.state.successful?   
+                <div className='box'>
+                    <p>Your learning group has been successfully created</p>
+                    <Link to='/myClass'>
+                    <button className="button">Go to your group</button>
+                    </Link>
+                </div>: null}
+            </div>
+        )
     }
-
-    return (
-        <div>
-        <InputGroup size="lg">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroup-sizing-lg">Enter class title </InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl aria-describedby="inputGroup-sizing-sm" aria-label="Large"/>
-                    </InputGroup>
-                    <br/>
-                    <InputGroup size="lg">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroup-sizing-lg">Enter class description </InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl aria-describedby="inputGroup-sizing-sm" aria-label="Large"/>
-                    </InputGroup>
-                    <br/>
-                    <Button variant="primary" onClick={handleCreating} >Click to create</Button>
-
-                    {displayMessage? <StatusMessage status={creatingStatus} Component = {'Creat'}/>:null}
-        </div>
-    )
 }
+
+function mapStateToProps({ authedUser, learningCycle}) {
+    return {
+      authedUser
+    };
+  }
+
+export default connect(mapStateToProps)(CreateLCForm)
