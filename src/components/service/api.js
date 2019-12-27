@@ -2,11 +2,16 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode';
 
 
-const apiUrl = 'http://localhost:3001/api'
+// const apiUrl = 'http://localhost:3001/api'
 
-export const apiUrlForImages = 'http://localhost:3001'
+// export const apiUrlForImages = 'http://localhost:3001'
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+export const apiUrlForImages = 'http://olisiticlms.com/api'
+
+// axios.defaults.baseURL = 'http://localhost:3001/api';
+
+axios.defaults.baseURL = 'http://olisiticlms.com/api';
+
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // Creating a user
