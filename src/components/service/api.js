@@ -4,13 +4,13 @@ import jwt_decode from 'jwt-decode';
 
 // const apiUrl = 'http://localhost:3001/api'
 
-// export const apiUrlForImages = 'http://localhost:3001'
+export const apiUrlForImages = 'http://localhost:5000'
+// export const apiUrlForImages = 'http://olisiticlms.com/api'
 
-export const apiUrlForImages = 'http://olisiticlms.com/api'
 
-// axios.defaults.baseURL = 'http://localhost:3001/api';
 
-axios.defaults.baseURL = 'http://olisiticlms.com/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
+// axios.defaults.baseURL = 'http://olisiticlms.com/api';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -109,7 +109,7 @@ export async function createRemoveAssignLgroup({taskId, lgroupId, token}) {
 
 
 export async function gettingTask(taskId) {
-    const response = await axios.get(`${apiUrl}/tasks`, taskId);
+    const response = await axios.get('/tasks', taskId);
        return response.data;
  }
   

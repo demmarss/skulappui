@@ -12,14 +12,11 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
     const [address, setAddress] = useState('')
     const [parentSearchstatus, setParentSearchStatus] = useState('')
     const [parent, setParent ] = useState('')
-    const [username, setUsername ] = useState('')
-    
+        
     function handleChangeName(e) {
         setName(e.target.value)
     }
-    function handleChangeUsername(e) {
-        setUsername(e.target.value)
-    }
+   
     function handleChangeCode(e) {
             setCode(e.target.value)
     }

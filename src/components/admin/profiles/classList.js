@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import MyProfile from './profile'
 
-export default function ClassList({GetAllClasses, GetAllStudents, GetStudentParent, LearningCycle}) {
+export default function ClassList({GetAllStudents, GetStudentParent, LearningCycle}) {
     
 
     const [students, setStudents] = useState([])
@@ -17,7 +17,6 @@ export default function ClassList({GetAllClasses, GetAllStudents, GetStudentPare
         setUserHere(user)
     }
 
-    console.log('...............lg', LearningCycle)
     return (
         <div>
             <div className='columns'>
@@ -36,7 +35,7 @@ export default function ClassList({GetAllClasses, GetAllStudents, GetStudentPare
                 } </div>
                 <div className='column is-5'>
                     {
-                    students.map(student => <p key={student._id} onClick={()=>getUser(student._id)}>{
+                    students.map(student => <p className='button is-fullwidth' key={student._id} onClick={()=>getUser(student._id)}>{
                         student.name
                     }</p>)
                 } </div>

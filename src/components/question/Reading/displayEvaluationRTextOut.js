@@ -26,14 +26,14 @@ class EvaluationReadingOutPictures extends Component {
 
     getTask=(taskId)=>{
        const {task}= this.props
-       let foundTask = task.find(t=> t._id == taskId)
+       let foundTask = task.find(t=> t._id === taskId)
         return foundTask
     }
 
     getUser=(userId)=>{
         const {user}= this.props
         const users = Object.keys(user).map(key=> user[key])
-        let foundUser = users.filter(user=> user._id == userId)
+        let foundUser = users.filter(user=> user._id === userId)
          return foundUser[0]
      }
 
@@ -44,7 +44,7 @@ class EvaluationReadingOutPictures extends Component {
         let correctedQuestionArray = []
 
         for (let i=0; i<arrayCorrected.length; i++){
-            if (arrayCorrected[i] == "correct") {
+            if (arrayCorrected[i] === "correct") {
                 correctedQuestionArray.push(i)
                 }
              }

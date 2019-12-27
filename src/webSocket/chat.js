@@ -1,14 +1,15 @@
 import socketIOClient from "socket.io-client";
 
-const baseUrl = 'ws://localhost:3001';
+const baseUrl = 'ws://localhost:5000';
 
-// URL = 'http://olisiticlms.com/api';
+//  const baseUrl = 'ws://olisiticlms.com/api';
 
 let socket = socketIOClient(baseUrl)
 
 export function connectingToSocket(){
   socket.on('changeColor', async (kids) => {
     // console.log('Connected to socket retrieving response', result)
+
   })        
 }
 

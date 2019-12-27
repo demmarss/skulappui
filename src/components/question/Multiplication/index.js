@@ -50,7 +50,6 @@ class Multiplication extends Component {
     }
 
       render() {
-        const {questions, answeredQuestions} = this.state;
         return (
           <div className="columns is-mobile is-centered">
           <div className="column is-half">

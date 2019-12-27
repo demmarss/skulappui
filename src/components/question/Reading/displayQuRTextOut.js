@@ -56,7 +56,6 @@ class ReadingTextOutQuestion extends Component {
     }
     
     handleFinish = (e) =>{
-        const {dispatch } = this.props
         const tasky = this.getTask(this.props.match.params.taskId)
         this.setState({
             displayResult: false,

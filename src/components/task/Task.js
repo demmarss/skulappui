@@ -68,7 +68,7 @@ export default class Task extends Component {
                                                 <select onChange={this.handleChange('lgroupId')}>
                                                     <option value={this.state.lgroupId} >Select learning group</option>
                                                     {learningCycle.map(x=>
-                                                    <option value={x._id} key={x._id}>{x.lgtitle}</option>
+                                                    <option value={x._id} key={x.code}>{x.lgtitle}</option>
                                                     )}
                                                 </select>
                                             </div>

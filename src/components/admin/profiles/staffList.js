@@ -14,7 +14,7 @@ export default function StaffList ({StaffList}){
                         StaffList('Teacher').map(x => <p className='button is-round is-fullwidth'
                         onClick={
                             () => setUserHere(x)
-                    } key={x.name}>
+                    } key={x._id}>
                         {x.name
                     } </p>)
                     } 

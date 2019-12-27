@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LandingPage from './landingPage'
 import { connect } from 'react-redux'
 import { handlingGetUsers } from '../components/actions/users'
-import NavBar from '../NavBar'
 
 
 class Home extends Component{

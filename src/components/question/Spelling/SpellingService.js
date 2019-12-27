@@ -42,7 +42,7 @@ export default function onCreateQuestions(words){
             let otherOptionRandomly = [];
             while (a.length < 3) {
                     var n = Math.floor(Math.random() * optionGroup.length);
-                    if (a.indexOf(n) == -1) {
+                    if (a.indexOf(n) === -1) {
                         a.push(n);
                         let b = optionGroup[n]
                         otherOptionRandomly.push(b)

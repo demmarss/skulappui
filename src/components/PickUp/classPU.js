@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 import socketIOClient from "socket.io-client";
-const baseUrl = 'ws://localhost:3001';
-// URL = 'http://olisiticlms.com/api';
+const baseUrl = 'ws://localhost:5000';
+// const baseUrl = 'ws://olisiticlms.com/api';
 let socket = socketIOClient(baseUrl)
 
 

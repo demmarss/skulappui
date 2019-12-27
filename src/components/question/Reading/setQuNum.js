@@ -4,7 +4,7 @@ import { handleReceiveLgroups } from '../../actions/learningCycle';
 import Main from './main'
 import ReadingMatchingText from './readingMatchingText'
 import ReadingTextOut from './readingTextOut'
-import { handleCreateTaskMainInfo, handleCreateTaskWithImages, handleAddOptionToTask, handleCreateTaskWithImage1 } from '../../actions/tasks';
+import { handleCreateTaskMainInfo, handleAddOptionToTask, handleCreateTaskWithImage1 } from '../../actions/tasks';
 
 
 
