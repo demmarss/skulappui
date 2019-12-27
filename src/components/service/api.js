@@ -4,13 +4,13 @@ import jwt_decode from 'jwt-decode';
 
 // const apiUrl = 'http://localhost:3001/api'
 
-export const apiUrlForImages = 'http://localhost:5000'
-// export const apiUrlForImages = 'http://olisiticlms.com/api'
+// export const apiUrlForImages = 'http://localhost:5000'
+export const apiUrlForImages = 'http://olisiticlms.com/api'
 
 
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
-// axios.defaults.baseURL = 'http://olisiticlms.com/api';
+// axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'http://olisiticlms.com/api';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 

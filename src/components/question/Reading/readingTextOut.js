@@ -58,8 +58,6 @@ export default class ReadingTextOut extends Component {
 
     handleFinish = (e) =>{
 
-        this.props.handleSetQuestion()
-
         this.setState({
             questionType: "",
             notification: false,
@@ -71,6 +69,9 @@ export default class ReadingTextOut extends Component {
             qUploaded: "file"     
         })
 
+        this.props.handleSetQuestion()
+
+        
         e.preventDefault()
 
     }

@@ -73,11 +73,6 @@ export function addFiles(task) {
   }
 
 
-
-
-
-
-
 // handler for deleting a learning group
 export function handleDeleteTask(taskId){
   return (dispatch, getState)=>{
@@ -89,7 +84,7 @@ export function handleDeleteTask(taskId){
     })
     .then((task)=> { 
       dispatch(deleteTask(task))
-      if(task.lgroupId !=="") dispatch(deleteTaskInLgroup(task))
+      if(task.lgroupId.length > 0) dispatch(deleteTaskInLgroup(task))
       }) // this is the deleted task
   }
 }

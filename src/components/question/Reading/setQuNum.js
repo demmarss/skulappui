@@ -60,9 +60,13 @@ class SetQuestionNumber extends Component {
 
         this.props.Status('submit')
                 
+
         this.setState({
-            status: "main"
-        })
+        questionNumber: '',
+        mainInfo: {},
+        status: "main",
+        taskId: ""
+    })
 
     }
 

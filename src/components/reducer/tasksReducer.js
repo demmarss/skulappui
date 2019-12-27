@@ -12,7 +12,7 @@ export default function task(state = [], action) {
       return [...state.filter(x => x._id !== action.task._id), action.task]
 
     case ADD_FILES:
-      return [...state.filter(x => x._id !== action.task._id), action.task]
+      return [action.task]
     
     case ASSIGN_LGROUP:
       return [...state.filter(x => x._id !== action.task._id), action.task]
@@ -27,7 +27,7 @@ export default function task(state = [], action) {
       return (state.length> 0)? state.filter(x => x._id !== action.task._id): null
 
     case CREATE_TASK:
-      return [...state, action.task]
+      return [action.task]
     default:
       return state;
   }
