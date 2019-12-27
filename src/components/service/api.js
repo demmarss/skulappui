@@ -11,9 +11,19 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // Creating a user
 export async function createUser(user) {
-   console.log('user here...api', user)
-     const response = await axios.post(`/users`, user);
+        const response = await axios.post(`/users`, user);
         return response.data;
+  }
+
+
+  
+// Creating a user
+export async function createUserAndAddToLearningGroup({user}) {
+   console.log('I invocked ..............')
+   const response = await axios.post(`/users/byAdmin`, user);
+
+   console.log('response....', response.data)
+   return response.data;
   }
 
 export async function gettingUsers(token) {
@@ -106,7 +116,7 @@ export async function createLgroup({lgtitle, token}) {
        return response.data; // response.data = object of learning group created
  }
 
- // To join Learning group
+ // Stident join Learning group
  export async function joinLgroup({lgCode, token}) {
 
     axios.defaults.headers['x-auth-token'] = token
@@ -114,6 +124,7 @@ export async function createLgroup({lgtitle, token}) {
        return response.data; // this should be array of learning groups that the user belong
  }
  
+
 // To get learning group
 export async function gettingLgroup(lgroupId) {
     const response = await axios.get(`/lgroups/${lgroupId}`);
@@ -127,6 +138,15 @@ export async function receivingLgroups({userId, token}) {
     const response = await axios.get(`/lgroups/${userId}`);
        return response.data; // this should be array of learning groups that the user belong
  }
+
+ // To get learning groups
+export async function receivingAllLgroups({token}) {
+   axios.defaults.headers['x-auth-token'] = token
+   const response = await axios.get(`/lgroups`);
+      return response.data; // this should be array of learning groups that the user belong
+}
+
+ 
 
   // To get tasks of a user 
  export async function receivingTasks({userId, token}) {
@@ -160,8 +180,8 @@ export async function receivingLgroups({userId, token}) {
 export async function loginUser(user) {
     const response = await axios.post(`/auth`, user);
        const token = response.data
-       const { username, _id, role } = decodeToken(token)
-       return {username, _id, token, role} 
+       const { username, _id, role, affiliationId } = decodeToken(token)
+       return {username, _id, token, role, affiliationId} 
  }
 
 
@@ -207,6 +227,18 @@ export async function createTimeRecord(userId) {
    }
 
 
+   // Get all schools
+   export async function getSchools() {
+      const response = await axios.get(`/schools`);
+         return response.data;
+      }
+      
+      
+   // Create school
+   export async function createSchool(formData) {
+   const response = await axios.post(`/schools`, formData);
+   return response.data;
+      }
 
 
  // to decoed token

@@ -74,7 +74,7 @@ class CreateLCForm extends Component {
     }
 }
 
-function mapStateToProps({ authedUser, learningCycle}) {
+function mapStateToProps({ authedUser}) {
     return {
       authedUser
     };

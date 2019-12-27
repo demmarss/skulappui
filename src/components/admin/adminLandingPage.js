@@ -57,7 +57,7 @@ export default function AdminLandingPage({users}) {
             { status === ''?
                 
                 <div>
-            <div className='columns'>
+            {/* <div className='columns'>
                 <div className='column is-6'>
                     <div className='box'>
                         <p className="title">
@@ -72,7 +72,7 @@ export default function AdminLandingPage({users}) {
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className='columns'>
                 <div className='column is-6'>
                     <div className='box'>
@@ -83,13 +83,13 @@ export default function AdminLandingPage({users}) {
                         <DailyFeeCollection/>
                     </div>
                 </div>
-                <div className='column is-6'>
+                {/* <div className='column is-6'>
                     <div className='box'>
                         <p className="title">
                             Enrollment Update
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
             </div>: null}
             

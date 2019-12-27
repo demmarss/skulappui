@@ -1,4 +1,5 @@
-import { createUser, gettingUser, gettingListOfUsers, gettingUsers } from '../service/api'
+import { createUser, gettingUser, gettingListOfUsers, gettingUsers, createUserAndAddToLearningGroup } from '../service/api'
+import { receiveLgroups } from './learningCycle';
 
 export const GET_USER = "GET_USER";
 export const CREATE_USER = "CREATE_USER";
@@ -53,6 +54,29 @@ export function handleCreateUser(user) {
         .then(({user}) => dispatch(addUser(user)));
     };
   }
+
+
+///////////////////////////////////////////////
+
+// creating handler that will be invoked in the UI 
+export function handleCreateUserAndAddToLearningGroup(user) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    const { token} = authedUser? authedUser:{token:""}
+  return createUserAndAddToLearningGroup({
+    user,
+    token
+    })
+      .then(({user, lgroups}) => {
+        dispatch(addUser(user));
+        dispatch(receiveLgroups(lgroups))
+      })
+      };
+}
+
+///////////////////////////////////////////////
+
+
 
 export function handleGetUser(userId) {
     return (dispatch) => {

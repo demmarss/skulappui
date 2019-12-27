@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
-import {getExpenses, createExpenses} from '../api'
+import {getExpenses, createExpenses} from '../components/service/api'
 
 export const ExpensesContext = createContext();
 
@@ -15,7 +15,6 @@ export default function ExpensesContextProvider (props) {
     
     
     function creatingExpenses (expenseHere) {
-        console.log('........', expenseHere)
         createExpenses(expenseHere).then((result)=>{
            if( result !== ''){
             const updatedExpenses = expenses.filter(x=> x._id !== result._id)

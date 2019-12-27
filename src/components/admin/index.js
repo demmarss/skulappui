@@ -7,7 +7,8 @@ import SetUp from './setUps'
 import AdminLandingPage from './adminLandingPage'
 import Finance from './Finance'
 import AdminTab from './adminTab'
-import  {handlingGetUsers, handleCreateUser} from '../actions/users'
+import  {handlingGetUsers, handleCreateUser, handleCreateUserAndAddToLearningGroup} from '../actions/users'
+import { handleReceiveAllLgroups } from '../actions/learningCycle'
 
 
 class Admin extends Component{
@@ -24,21 +25,24 @@ class Admin extends Component{
         const {dispatch, authedUser} = this.props
         if (authedUser){
             dispatch(handlingGetUsers())
+            dispatch(handleReceiveAllLgroups())
         }
     }
 
     createUser =(user) =>{
         const {dispatch} = this.props
-        dispatch(handleCreateUser(user))
-
-
-
         
+        //Join this if student to the lgroup
+        if(user.role === 'Student'){
+            dispatch(handleCreateUserAndAddToLearningGroup(user))
+        }else{
+            dispatch(handleCreateUser(user))
+        }
     }
 
     render(){
         const {display} = this.state
-        const {authedUser, user} = this.props
+        const {authedUser, user, learningCycle } = this.props
 
         console.log('Users at admin index', user)
         return(
@@ -47,13 +51,13 @@ class Admin extends Component{
             <AdminTab SetDisplay={this.setDisplay}/>
                     {display === ''? <AdminLandingPage users={user}/>:null}
                     {
-                    display === 'setUp' ? <SetUp users={user} createUser = {this.createUser}/>: null
+                    display === 'setUp' ? <SetUp users={user} createUser = {this.createUser} LearningCycle={learningCycle} AuthedUser={authedUser}/>: null
                 }
                     {
-                    display === 'profile' ? <Profile users={user}/>: null
+                    display === 'profile' ? <Profile users={user} LearningCycle={learningCycle}/>: null
                 }
                     {
-                    display === 'record' ? <Record users={user}/>: null
+                    display === 'record' ? <Record users={user} LearningCycle={learningCycle}/>: null    //I have been changing user to users, my mistake fix later
                 }
                     {
                     display === 'finance' ? <Finance users={user}/>: null
@@ -67,10 +71,11 @@ class Admin extends Component{
     }
 }
 
-function mapStateToProps({ authedUser, user}) {
+function mapStateToProps({ authedUser, user, learningCycle}) {
     return {
       authedUser,
-      user
+      user,
+      learningCycle
     };
   }
   

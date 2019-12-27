@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import SearchBar from '../searchBar/searchBar'
 
-export default function MySetUp({SetSuccess, users, creatUser}) {
+export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, AuthedUser}) {
 
     const [code, setCode] = useState('')
     const [name, setName] = useState('')
@@ -72,18 +72,36 @@ export default function MySetUp({SetSuccess, users, creatUser}) {
             realCode = '000'+code+extraCode
         }
 
-        
-        let user = {
-            code: realCode,
-            name,
-            role,
-            grade,
-            mobile,
-            parentId,
-            address,
-            username: realCode,
-            password: realCode,
+       let user = {}
+
+        if (role ==='Student'){
+            user = {
+                code: realCode,
+                name,
+                role,
+                grade,
+                mobile: parent.mobile,
+                parentId,
+                address: parent.address,
+                username: realCode,
+                password: realCode,
+                affiliationId: AuthedUser.affiliationId
+            }
+        }else{
+            user = {
+                code: realCode,
+                name,
+                role,
+                grade,
+                mobile,
+                parentId,
+                address,
+                username: realCode,
+                password: realCode,
+                affiliationId: AuthedUser.affiliationId
+            }
         }
+
         creatUser(user)
         SetSuccess(true)
         ResetValue()
@@ -100,9 +118,9 @@ export default function MySetUp({SetSuccess, users, creatUser}) {
         setParentSearchStatus('')
     }
     const roleOptions = ['Student', 'Teacher', 'Parent', 'Admin']
-    const gradeOptions = ['Class 1', 'Class 2', 'Class 3', 'Class 4']
-
+    const gradeOptions = LearningCycle
     return (
+        
         <div>
                 <p className='title'>Set Up</p>
                 <div className='columns'>
@@ -227,11 +245,11 @@ export default function MySetUp({SetSuccess, users, creatUser}) {
                                                     {
                                                     gradeOptions.map(gradeOption => <p className="navbar-item button is-hoverable"
                                                         onClick={
-                                                            () => handleChangeGrade(gradeOption)
+                                                            () => handleChangeGrade(gradeOption.lgtitle)
                                                         }
                                                         key
-                                                        ={gradeOption}>
-                                                        {gradeOption} </p>)
+                                                        ={gradeOption.code}>
+                                                        {gradeOption.lgtitle} </p>)
                                                 } </div>
                                             </div>
                                         </div>

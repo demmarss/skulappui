@@ -1,4 +1,4 @@
-import { createLgroup, receivingLgroups, joinLgroup, gettingLgroup, deletingLgroup } from '../service/api'
+import { createLgroup, receivingLgroups, joinLgroup, gettingLgroup, deletingLgroup, receivingAllLgroups } from '../service/api'
 
 export const GET_GROUP = "GET_GROUP";
 export const RECEIVE_LGROUPS = "RECEIVE_LGROUPS";
@@ -109,6 +109,7 @@ export function handleJoinLgroup(lgCode){
 }
 
 
+// get Lgroups for this user
 export function handleReceiveLgroups(userId){
   return (dispatch, getState) => {
     const { authedUser } = getState();
@@ -121,6 +122,20 @@ export function handleReceiveLgroups(userId){
     .then((lgroups) => dispatch(receiveLgroups(lgroups)));
 };
 }
+
+// get Lgroups for this user
+export function handleReceiveAllLgroups(){
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    const { token} = authedUser? authedUser:{token:""}
+  return receivingAllLgroups({
+    token
+  })
+  // calling action through dispatch and assigning it to username
+    .then((lgroups) => dispatch(receiveLgroups(lgroups)));
+};
+}
+
 
 export function handleGetLgroup(lgroupId) {
   return (dispatch) => {

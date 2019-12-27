@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
-import {getPayments, createPayment} from '../api'
+import {getPayments, createPayment} from '../components/service/api'
 
 export const PaymentContext = createContext();
 

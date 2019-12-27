@@ -5,7 +5,7 @@ import ParentList from './parentList'
 import StaffList from './staffList'
 import MyProfile from './profile'
 
-export default function Profile({users}) {
+export default function Profile({users, LearningCycle}) {
 
     console.log('Users at profile', users)
     
@@ -91,7 +91,7 @@ export default function Profile({users}) {
             {
             option === 'Class' ? <ClassList GetAllClasses={getAllClasses}
                 GetAllStudents={getAllStudents}
-                GetStudentParent={getStudentParent}/> : null
+                GetStudentParent={getStudentParent} LearningCycle={LearningCycle}/> : null
         }
             {
             option === 'Parents' ? <ParentList ParentList={getUserBaseOnRole}/> : null

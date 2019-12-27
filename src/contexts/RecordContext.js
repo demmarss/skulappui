@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
-import {getRecords, createTimeRecord} from '../api'
+import {getRecords, createTimeRecord} from '../components/service/api'
 
 export const RecordContext = createContext();
 

@@ -18,6 +18,7 @@ class TaskList extends Component {
 
         }
     }
+    
 
     handleDelete = (taskId) =>{
 
