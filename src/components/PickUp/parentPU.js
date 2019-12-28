@@ -9,6 +9,7 @@ export default function ParentPU ({users}){
     const [status, setStatus ] = useState('')
 
     function handleSearch(code){
+        console.log('User in Parent PU', users)
         const userhere2 = users.find(user => user.code === code)
         if (userhere2 !== undefined){
             setStatus('success')

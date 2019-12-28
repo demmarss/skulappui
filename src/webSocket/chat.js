@@ -2,7 +2,7 @@ import socketIOClient from "socket.io-client";
 
 // const baseUrl = 'ws://localhost:5000';
 
- const baseUrl = 'ws://olisiticlms.com/api';
+ const baseUrl = 'ws://olisiticlms.com/ws';
 
 let socket = socketIOClient(baseUrl)
 

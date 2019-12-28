@@ -3,12 +3,22 @@ import ClassPU from './classPU'
 import ParentPU from './parentPU'
 import AdminPU from './adminPU'
 import PickUpTab from './pickUpTab'
+import { connect } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
-export default function PickUp ({users}) {
+export default function PickUp () {
+
     const [status, setStatus ] = useState('')
     const [kidsPickUpList, setKidsPickUpList] = useState([])
 
-        
+    const dispatch = useDispatch()
+    
+    const users = useSelector(({user})=>{
+      console.log('Usere here.............', user)
+      return user
+    })
+
+    console.log('Usere ssssss here.............', users)
     return(
 
         <div className='container'>
@@ -25,7 +35,7 @@ export default function PickUp ({users}) {
 
   </div>
 </section>
-{status === 'Parent'? <ParentPU SetStatus = {setStatus} SetKidsPickUpList={setKidsPickUpList}/>: null}
+{status === 'Parent'? <ParentPU SetStatus = {setStatus} SetKidsPickUpList={setKidsPickUpList} users={users}/>: null}
             {status === 'Class 1'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}
             {status === 'Class 2'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}
             {status === 'Class 3'? <ClassPU Status={status} SetStatus = {setStatus} KidsPickUpList={kidsPickUpList}/>: null}

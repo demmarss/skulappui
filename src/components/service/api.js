@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 // const apiUrl = 'http://localhost:3001/api'
 
 // export const apiUrlForImages = 'http://localhost:5000'
+
 export const apiUrlForImages = 'http://olisiticlms.com/api'
 
 
@@ -51,7 +52,6 @@ export async function gettingListOfUsers({userIdArray}) {
    const response = await axios.post(`/users/getManyUsers`, {userIdArray });
    return response.data;
  }
- 
  
 
 // Creating a Task and adding it to a learning group
@@ -241,7 +241,11 @@ export async function createTimeRecord(userId) {
       
    // Create school
    export async function createSchool(formData) {
+
    const response = await axios.post(`/schools`, formData);
+
+   console.log('Responding.....', response)
+
    return response.data;
       }
 

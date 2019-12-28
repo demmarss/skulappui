@@ -25,9 +25,7 @@ export default function SchoolContextProvider (props) {
         }
         )   
     }
-
-    console.log('I get school at context', schools)
-
+    
 return(
             <SchoolContext.Provider value ={{schools, creatingSchool}}>
                 {props.children}
