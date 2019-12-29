@@ -21,7 +21,7 @@ export default class ReadingTextOut extends Component {
       }
     
       handleRadio = (e) =>{
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
     
     handleSubmit = (e)=>{
@@ -35,8 +35,6 @@ export default class ReadingTextOut extends Component {
         let formData = new FormData();
             formData.append('questionImage', this.state.qFile);
             formData.append('timeRequired', this.state.timeRequired);
-
-            console.log("form Data here...", formData)
             
         this.props.handleAddFile1(formData)
 

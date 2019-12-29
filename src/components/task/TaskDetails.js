@@ -10,8 +10,7 @@ class TaskDetail extends Component {
 
         const { authedUser, task } = this.props
         const taskhere = task.find(x=> x._id === this.props.match.params.taskId)
-        console.log('I fired', taskhere)
-
+        
         return (
             <div>
                 {authedUser?

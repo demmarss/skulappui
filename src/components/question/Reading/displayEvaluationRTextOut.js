@@ -60,8 +60,6 @@ class EvaluationReadingOutPictures extends Component {
       
         const users = user
 
-        console.log(users)
-
         return(
             <div>
             

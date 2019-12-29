@@ -39,8 +39,8 @@ class AssignedGroups extends Component{
             allUserAnswerArray = allUserAnswerArray.concat(Object.keys(task.answerHistory[i]))
         }
         
-        allUserAnswerArray.map(user=> {
-            group.members.map(member=> {
+        allUserAnswerArray.forEach(user=> {
+            group.members.forEach(member=> {
                 if (user === member){
                     commonUserArray.push(user)
                 }

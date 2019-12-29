@@ -43,8 +43,6 @@ class Admin extends Component{
     render(){
         const {display} = this.state
         const {authedUser, user, learningCycle } = this.props
-
-        console.log('Users at admin index', user)
         return(
             <div className='container'>
                 {authedUser? <React.Fragment>

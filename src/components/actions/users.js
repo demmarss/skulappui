@@ -51,7 +51,7 @@ export function handleCreateUser(user) {
         user
       })
       // calling action through dispatch and assigning it to username
-        .then(({user}) => dispatch(addUser(user)));
+        .then((user) => dispatch(addUser(user)));
     };
   }
 

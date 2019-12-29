@@ -10,8 +10,6 @@ class ProgressList extends Component {
     handleDelete = (taskId) =>{
 
         const { dispatch } = this.props
-
-        console.log('I trigger id', taskId)
         
         dispatch(handleDeleteTask(taskId))
     }

@@ -3,22 +3,20 @@ import ClassPU from './classPU'
 import ParentPU from './parentPU'
 import AdminPU from './adminPU'
 import PickUpTab from './pickUpTab'
-import { connect } from 'react-redux'
-import {useDispatch, useSelector} from 'react-redux'
+// import { useDispatch, connect } from 'react-redux'
+import { useSelector} from 'react-redux'
 
 export default function PickUp () {
 
     const [status, setStatus ] = useState('')
     const [kidsPickUpList, setKidsPickUpList] = useState([])
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     
     const users = useSelector(({user})=>{
-      console.log('Usere here.............', user)
       return user
     })
 
-    console.log('Usere ssssss here.............', users)
     return(
 
         <div className='container'>

@@ -22,7 +22,7 @@ export default class Task extends Component {
 
         let result =[]
         
-        task.lgroupId.map(lgroupId => {
+        task.lgroupId.forEach(lgroupId => {
             let lg = learningCycle.find(x=> x._id === lgroupId)
             if (lg !== undefined) {result.push(lg)}
         })

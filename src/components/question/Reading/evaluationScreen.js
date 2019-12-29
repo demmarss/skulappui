@@ -15,7 +15,6 @@ export default class EvaluationScreen extends Component {
     // I will use sideEffect to populate the audioArray with the user answer audio response
 
     handleNext=()=>{
-        console.log(this.state.counter)
         this.setState({
             counter: this.state.counter+1,
             remarkArray: this.state.remarkArray.concat(this.state.remark)
@@ -29,9 +28,6 @@ export default class EvaluationScreen extends Component {
         })
         
         this.props.HandleFinish(this.state.remarkArray)
-
-        
-        console.log(this.state.remarkArray)
     }
 
     handleChange=(e)=>{

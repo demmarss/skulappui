@@ -29,19 +29,9 @@ class Progress extends Component {
 
         const correctedArray = this.attempts(authedUser._id, taskSingle).map(x => x.correctedArray)
 
-        console.log("Corrected Array:", correctedArray)
-
-        console.log("total attempts: ", correctedArray.length)
-
-        console.log('here is the task', taskSingle)
-
-        console.log("total number of questions needed for xlabel", taskSingle.questions.length)
-
-
         // this give all the question index that were answered correctly
         const allQuestionAnweredCorretly = correctedArray.flatMap(x=> [...x])
-        console.log("use spread to get all elements", correctedArray.flatMap(x=> [...x]))
-
+        
         // building the number of times that each question is answered correctly
 
         let Ylabel = []
@@ -52,16 +42,11 @@ class Progress extends Component {
             Ylabel.push(count)
         }
         
-        console.log('Ylabel needed', Ylabel)
-
         let Xlabel = []
 
         for (let i = 0; i< taskSingle.questions.length; i++){
             Xlabel.push(i)
-        }
-
-        console.log('Xlabel needed', Xlabel)
-        
+        }       
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 

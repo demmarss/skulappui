@@ -45,7 +45,6 @@ export default function NumberPad({users}) {
             }
         } else {
             const userID = userhere[0]._id
-            console.log("user ID ", userhere[0]._id)
             setStatus('success')
             creatingTimeRecord({userID})
             setTimeout(handleClear, 1500);

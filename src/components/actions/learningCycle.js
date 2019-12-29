@@ -66,8 +66,6 @@ export function deleteLCycle(lgroupId) {
 
 // handler for deleting a learning group
 export function handleDeleteLgroup(lgroupId){
-  console.log('', lgroupId)
-
   return (dispatch, getState)=>{
     const { authedUser }= getState();
     const { token } = authedUser? authedUser:{todken:""}

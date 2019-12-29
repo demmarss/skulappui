@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import socketIOClient from "socket.io-client";
-// const baseUrl = 'ws://localhost:5000';
+const baseUrl = 'ws://localhost:5000';
 
-const baseUrl = 'ws://olisiticlms.com/ws';
+// const baseUrl = 'ws://olisiticlms.com/ws';
 
 let socket = socketIOClient(baseUrl)
 
@@ -16,10 +16,7 @@ export default function ClassPU ({Status}){
         socket.on('changeColor', (result) => {
             setKids([...kids, ...result ])
           })
-    })
-
-    console.log("Childreen here", kids)
-     
+    })     
     function getKidsByGrade(grade){
         const kidByGrade = kids.filter(kid=> kid.grade === grade)
         return kidByGrade

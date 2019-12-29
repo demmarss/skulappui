@@ -41,7 +41,7 @@ class LogIn extends Component {
           }
 
         return(
-            <div className="columns is-mobile is-centered">
+            <div className="columns is-centered">
                 <div className="column is-4">
                 <h3 className="title has-text-grey">Login</h3>
                 <p className="subtitle has-text-grey">Please login to proceed.</p>

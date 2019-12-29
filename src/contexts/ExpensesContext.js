@@ -1,17 +1,25 @@
 import React, {createContext, useState, useEffect} from 'react'
 import {getExpenses, createExpenses} from '../components/service/api'
+import { useSelector} from 'react-redux'
 
 export const ExpensesContext = createContext();
+
 
 export default function ExpensesContextProvider (props) {
 
     const [ expenses, setExpenses ] = useState([])
 
+    const authedUser = useSelector(({authedUser})=>{
+        return authedUser
+      })
+
     useEffect(() => {
-        getExpenses().then((result)=>
-        setExpenses(result)
-        );
-    }, []);
+        if (authedUser){
+            getExpenses().then((result)=>
+            setExpenses(result)
+            );           
+        }
+    }, [expenses]);
     
     
     function creatingExpenses (expenseHere) {

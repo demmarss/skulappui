@@ -107,7 +107,6 @@ export function handleDeleteTask(taskId){
 
   // handler for creating task
   export function handleCreateTaskMainInfo(taskMainInfo) {
-    console.log('To be sent to API service....', taskMainInfo)
     return (dispatch, getState) => {
       const { authedUser } = getState();
       const { token } = authedUser? authedUser:{token:""}

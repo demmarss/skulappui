@@ -104,7 +104,7 @@ class SetQuestionNumber extends Component {
     }
 
     handleRadio = (e) =>{
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     isAdvanceSetiing=()=>{

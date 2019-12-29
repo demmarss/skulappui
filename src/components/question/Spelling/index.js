@@ -33,10 +33,7 @@ class Spelling extends Component {
                     questions: questions,
                     scoreHistory: []
                     }
-
         dispatch(handleCreateTask(task, lgroupId))
-
-        console.log("I execute")
     }
 
     setQuestions = (q) => {
@@ -55,7 +52,6 @@ class Spelling extends Component {
 
       render() {
         const {realQuestions, questions, answeredQuestions} = this.state;
-        console.log(realQuestions)
         return (
           <div className="columns is-mobile is-centered">
           <div className="column is-half">

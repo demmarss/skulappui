@@ -34,9 +34,7 @@ class SetQuestionNumber extends Component {
         }
         
         let questions = this.generateQuestions(Number(this.state.questionNumber))
-        console.log(this.state.level)
         this.props.Status('submit', questions,[], this.state.lgroupId)
-
         this.setState({
             questionNumber: 0
         })
@@ -133,7 +131,7 @@ class SetQuestionNumber extends Component {
     }
 
     handleRadio = (e) =>{
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     isAdvanceSetiing=()=>{

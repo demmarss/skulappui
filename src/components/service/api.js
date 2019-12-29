@@ -2,22 +2,21 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode';
 
 
-// const apiUrl = 'http://localhost:3001/api'
-
-// export const apiUrlForImages = 'http://localhost:5000'
-
-export const apiUrlForImages = 'http://olisiticlms.com/api'
+export const apiUrlForImages = 'http://localhost:5000'
+// export const apiUrlForImages = 'http://olisiticlms.com/api'
 
 
 
-// axios.defaults.baseURL = 'http://localhost:5000/api';
-axios.defaults.baseURL = 'http://olisiticlms.com/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
+// axios.defaults.baseURL = 'http://olisiticlms.com/api';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // Creating a user
 export async function createUser(user) {
         const response = await axios.post(`/users`, user);
+
+        console.log('user created', response.data)
         return response.data;
   }
 
@@ -25,20 +24,17 @@ export async function createUser(user) {
   
 // Creating a user
 export async function createUserAndAddToLearningGroup({user}) {
-   console.log('I invocked ..............')
    const response = await axios.post(`/users/byAdmin`, user);
 
-   console.log('response....', response.data)
    return response.data;
   }
 
 export async function gettingUsers(token) {
-   console.log('I fired but not authorized')
+   
    axios.defaults.headers['x-auth-token'] = token
 
    const response = await axios.get(`/users`);
 
-   console.log('response here ...', response.data)
    return response.data;
 }
 
@@ -80,7 +76,6 @@ export async function createTask({task, token, lgroupId}) {
  }
  
  export async function createAssignLgroup({taskId, lgroupId, token}) {
-    console.log("Task id Api", taskId)
    axios.defaults.headers['x-auth-token'] = token
    const response = await axios.put(`/tasks/assignLgroup`, {taskId, lgroupId });
    return response.data;
@@ -117,7 +112,6 @@ export async function gettingTask(taskId) {
 export async function createLgroup({lgtitle, token}) {
     axios.defaults.headers['x-auth-token'] = token
     const response = await axios.post(`/lgroups`, {lgtitle});
-        console.log(response)
        return response.data; // response.data = object of learning group created
  }
 
@@ -225,9 +219,7 @@ export async function createTimeRecord(userId) {
    
    // Create payment
    export async function createExpenses(expense) {
-     console.log('...api', expense)
      const response = await axios.post(`/expenses`, expense);
-
      return response.data;
    }
 
@@ -241,11 +233,7 @@ export async function createTimeRecord(userId) {
       
    // Create school
    export async function createSchool(formData) {
-
    const response = await axios.post(`/schools`, formData);
-
-   console.log('Responding.....', response)
-
    return response.data;
       }
 
