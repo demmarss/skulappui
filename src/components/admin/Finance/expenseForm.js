@@ -5,6 +5,7 @@ export default function ExpensesForm () {
 
 
     const[amount, setAmount]=useState('')
+    const[status, setStatus]=useState(false)
     const[description, setDescription]=useState('')
     const[file, setFile]=useState(null)
     const[qUploaded, setqUploaded]=useState('')
@@ -20,6 +21,7 @@ export default function ExpensesForm () {
         formData.append('description', description);
 
         creatingExpenses(formData)
+        setStatus(true)
 
         e.preventDefault()
     }
@@ -31,7 +33,9 @@ export default function ExpensesForm () {
 
     return (
         <div>
-            <input className='input box' type='text' value={amount} placeholder='Enter amount ' onChange={(e)=> setAmount(e.target.value)}/>
+           {!status?
+           <React.Fragment>
+           <input className='input box' type='text' value={amount} placeholder='Enter amount ' onChange={(e)=> setAmount(e.target.value)}/>
             <input className='textarea box' type='text' value={description} placeholder="Enter description" onChange={(e)=> setDescription(e.target.value)}/>
             <div className={qUploaded} onChange={(e)=> handleChangeFile(e)}>
                                 <label className="file-label">
@@ -44,6 +48,13 @@ export default function ExpensesForm () {
                                 </label>
                             </div>
             <p className='button is-success' onClick={handleSubmit}>Submit</p>
+            </React.Fragment>:
+            <div className='notification is-success'>
+                Expenses submitted
+            </div>
+            }
+
+            
        </div>
     )
 }
