@@ -14,7 +14,7 @@ export default function AdminLandingPage({users}) {
     
     function handleSearch(mobile){
         const family = users.filter(user => user.mobile === mobile)
-        const userhere = family.length < 1? family.find(user => user.role === "Parent" ): undefined
+        const userhere = family.length > 1? family.find(user => user.role === "Parent" ): undefined
 
         if (userhere !== undefined){
             setStatus('success')

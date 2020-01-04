@@ -10,12 +10,13 @@ export default function Finance({users}) {
 
     function handleSearch(mobile) {
         const family = users.filter(user => user.mobile === mobile)
-        const userhere2 = family.length < 1? family.find(user => user.role === "Parent" ): undefined
+        const userhere2 = family.length > 1? family.find(user => user.role === "Parent" ): undefined
         if (userhere2 !== undefined) {
             setStatus('success')
             setUserHere(userhere2)
 
         } else {
+            alert('Not successful, try another number')
             setStatus('failure')
             setUserHere({})
         }
