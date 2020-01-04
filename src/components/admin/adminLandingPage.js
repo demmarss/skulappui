@@ -12,8 +12,10 @@ export default function AdminLandingPage({users}) {
     const [userHereRole, setUserHereRole] = useState('')
     const [userHere, setUserHere] = useState('')
     
-    function handleSearch(code){
-        const userhere = users.find(user => user.code === code)
+    function handleSearch(mobile){
+        const family = users.filter(user => user.mobile === mobile)
+        const userhere = family.length < 1? family.find(user => user.role === "Parent" ): undefined
+
         if (userhere !== undefined){
             setStatus('success')
             setUserHere(userhere)

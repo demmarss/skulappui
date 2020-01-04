@@ -45,6 +45,7 @@ import ReadingTextOutQuestion from './components/question/Reading/displayQuRText
 import EvaluationReadingOutPictures from './components/question/Reading/displayEvaluationRTextOut'
 
 import {connect} from 'react-redux'
+
 import SchoolContextProvider from './contexts/SchoolContext';
 
 function App() {

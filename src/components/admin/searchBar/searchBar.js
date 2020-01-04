@@ -35,7 +35,7 @@ export default function SearchBar({Search, Status, SetStatus}) {
             <input className="input"
                 type='text'
                 value={code}
-                placeholder='Enter code'
+                placeholder='Enter mobile number'
                 onChange={handleChange}/>
 
             <p className="button is-medium is-success"

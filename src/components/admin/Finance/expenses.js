@@ -4,6 +4,7 @@ import {ExpensesContext} from '../../../contexts/ExpensesContext'
 export default function Expenses() {
 
     const {expenses} = useContext(ExpensesContext)
+    
     function getDate(value) {
         const dateF = new Date()
         const year = dateF.getFullYear(value)

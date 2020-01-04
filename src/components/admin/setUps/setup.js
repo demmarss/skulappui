@@ -272,7 +272,7 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
                     <div className="field-body">
                         <div className="field">
                             <p className="control">
-                                <input className="input is-danger" type="text" placeholder="Enter your name"
+                                <input className="input is-danger" type="text" placeholder="Enter your address"
                                     value={address}
                                     onChange={handleSetAddress}/>
                             </p>
@@ -288,7 +288,7 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
                     <div className="field-body">
                         <div className="field">
                             <p className="control">
-                                <input className="input is-danger" type="text" placeholder="Enter your name"
+                                <input className="input is-danger" type="text" placeholder="Enter your mobile"
                                     value={mobile}
                                     onChange={handleSetMobile}/>
                             </p>

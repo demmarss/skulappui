@@ -8,8 +8,9 @@ export default function Finance({users}) {
     const [status, setStatus] = useState('')
     const [userHere, setUserHere] = useState('')
 
-    function handleSearch(code) {
-        const userhere2 = users.find(user => user.code === code)
+    function handleSearch(mobile) {
+        const family = users.filter(user => user.mobile === mobile)
+        const userhere2 = family.length < 1? family.find(user => user.role === "Parent" ): undefined
         if (userhere2 !== undefined) {
             setStatus('success')
             setUserHere(userhere2)
@@ -17,7 +18,6 @@ export default function Finance({users}) {
         } else {
             setStatus('failure')
             setUserHere({})
-
         }
     }
 
@@ -28,15 +28,19 @@ export default function Finance({users}) {
                 <CurrentBalance/> */}
         
             <div className='columns'>
-                <div className='column is-4'>
+                <div className='column is-3'>
                     <p className='button is-blocked is-warning' onClick={()=> setStatus('newExpenses')}>New expenses</p>
                 </div>
-                <div className='column is-4'>
+                <div className='column is-3'>
                     <p className='button is-blocked is-primary' onClick={()=> setStatus('newPayment')}>New payment</p>
                 </div>
-                <div className='column is-4'>
+                <div className='column is-3'>
                     <p className='button is-blocked is-success' onClick={()=> setStatus('expHistory')}>Expenses History</p>
                 </div>
+                <div className='column is-3'>
+                    <p className='button is-blocked is-success' onClick={()=> setStatus('expHistory')}>Send payment reminder</p>
+                </div>
+
             </div>
 
         
