@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState} from 'react'
 import {getExpenses, createExpenses} from '../components/service/api'
 import { useSelector} from 'react-redux'
 
@@ -9,19 +9,12 @@ export default function ExpensesContextProvider (props) {
 
     const [ expenses, setExpenses ] = useState([])
 
-    const authedUser = useSelector(({authedUser})=>{
-        return authedUser
-      })
+    function getingExpenses(){
+        getExpenses().then((result)=> setExpenses(result))
+                
+ }
+ 
 
-    useEffect(() => {
-        if (authedUser){
-            getExpenses().then((result)=>
-            setExpenses(result)
-            );           
-        }
-    }, [expenses]);
-    
-    
     function creatingExpenses (expenseHere) {
         createExpenses(expenseHere).then((result)=>{
            if( result !== ''){
@@ -35,7 +28,7 @@ export default function ExpensesContextProvider (props) {
     }
 
 return(
-            <ExpensesContext.Provider value ={{expenses, creatingExpenses}}>
+            <ExpensesContext.Provider value ={{expenses, creatingExpenses, getingExpenses}}>
                 {props.children}
             </ExpensesContext.Provider>
     )

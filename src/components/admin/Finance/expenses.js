@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {ExpensesContext} from '../../../contexts/ExpensesContext'
 
 export default function Expenses() {

@@ -10,21 +10,7 @@ export default function Profile({users, LearningCycle}) {
     console.log('Users at profile', users)
     
     const [option, setOption] = useState('')
-    const [status, setStatus] = useState('')
-    const [userHere, setUserHere] = useState('')
 
-    function handleSearch(code) {
-        const userhere2 = users.find(user => user.code === code)
-        if (userhere2 !== undefined) {
-            setStatus('success')
-            setUserHere(userhere2)
-
-        } else {
-            setStatus('failure')
-            setUserHere('')
-
-        }
-    }
 
     function getAllClasses() {
 
@@ -75,16 +61,6 @@ export default function Profile({users, LearningCycle}) {
                     </ul>
                 </div>
                 <div className="columns is-mobile is-centered">
-                <div className="column is-half">
-                        <p className="title is-4">
-                            Search for records 
-                        </p>
-                    
-                        <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
-                        {
-                status === 'success' ? <MyProfile user={userHere}/> : null
-            } 
-                </div>
             </div>
  </div>
 

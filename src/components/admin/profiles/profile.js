@@ -41,13 +41,13 @@ export default function MyProfile({
                             <div className='column'>
                                 <p>
 
-                                    Code:
+                                    Mobile:
                                 </p>
 
                             </div>
                             <div className='column'>
                                 <small>{
-                                    user.code
+                                    user.mobile
                                 }</small>
                             </div>
                         </div>

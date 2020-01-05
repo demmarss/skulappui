@@ -1,12 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import PaymentForm from './payment'
 import SearchBar from '../searchBar/searchBar'
 import Expenses from './expenses'
 import ExpensesForm from './expenseForm'
 
+import { ExpensesContext } from '../../../contexts/ExpensesContext'
+import { PaymentContext } from '../../../contexts/PaymentContext'
+import DailyFeeCollection from './dailyFeeCollection'
+
+
+
 export default function Finance({users}) {
     const [status, setStatus] = useState('')
-    const [userHere, setUserHere] = useState('')
+    const [userHere, setUserHere] = useState('') 
+
+    const {getingExpenses } = useContext(ExpensesContext)
+
+    useEffect(() => {
+        getingExpenses()
+      },[]);
+
+    const {getingPayments} = useContext(PaymentContext)
+
+      useEffect(() => {
+        getingPayments()
+      },[]);
 
     function handleSearch(mobile) {
         const family = users.filter(user => user.mobile === mobile)
@@ -24,7 +42,11 @@ export default function Finance({users}) {
 
     return (
     <div className='container'>
-        <h1 className='title' > Finance</h1> {/* <Income/>
+        <h1 className='title' > Finance</h1> 
+        <DailyFeeCollection/>
+        <br/>
+        <br/>
+        {/* <Income/>
                 <Expenses/>
                 <CurrentBalance/> */}
         

@@ -198,8 +198,8 @@ export async function createTimeRecord(userId) {
  }
 
  // Get all payments
-  export async function getPayments() {
-   const response = await axios.get(`/payments`);
+  export async function getPayments(adminId) {
+   const response = await axios.get(`/payments`, adminId);
     return response.data;
  }
  
@@ -213,7 +213,9 @@ export async function createTimeRecord(userId) {
    // Get all payments
    export async function getExpenses() {
      const response = await axios.get(`/expenses`);
-      return response.data;
+
+     console.log('Response from backend', response.data)
+     return response.data;
    }
     
    

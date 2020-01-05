@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import SearchBar from './searchBar/searchBar'
-
 import PaymentForm from './Finance/payment'
-import DailyFeeCollection from './Finance/dailyFeeCollection'
+
 
 
 export default function AdminLandingPage({users}) {
@@ -42,60 +40,7 @@ export default function AdminLandingPage({users}) {
 
     return (
         <div>
-            <div className="columns is-mobile is-centered">
-                <div className="column is-half">
-                        <p className="title is-4">
-                            Search for records 
-                        </p>
-                    
-                        <SearchBar Search={handleSearch} Status={status} SetStatus={setStatus}/>
-                    
-                </div>
-            </div>
-
-            {status ==='success'? userHereRole ==='Student'? <div>{studentNeed()}</div>:null:null}
-            {status ==='success'? userHereRole ==='Parent'? <div>{parentNeed()}</div>:null:null}
-                        
-            { status === ''?
-                
-                <div>
-            {/* <div className='columns'>
-                <div className='column is-6'>
-                    <div className='box'>
-                        <p className="title">
-                            Student attendance
-                        </p>
-                    </div>
-                </div>
-                <div className='column is-6'>
-                    <div className='box'>
-                        <p className="title">
-                            Teachers attendance
-                        </p>
-                    </div>
-                </div>
-            </div> */}
-            <div className='columns'>
-                <div className='column is-6'>
-                    <div className='box'>
-                        <p className="title">
-                            Payment update
-
-                        </p>
-                        <DailyFeeCollection/>
-                    </div>
-                </div>
-                {/* <div className='column is-6'>
-                    <div className='box'>
-                        <p className="title">
-                            Enrollment Update
-                        </p>
-                    </div>
-                </div> */}
-            </div>
-            </div>: null}
-            
-
+            <h1 className='title'>Welcome to administration page</h1>
         </div>
     )
 }
