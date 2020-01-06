@@ -51,6 +51,20 @@ export default function MyProfile({
                                 }</small>
                             </div>
                         </div>
+                        <div className="columns">
+                            <div className='column'>
+                                <p>
+
+                                    Code:
+                                </p>
+
+                            </div>
+                            <div className='column'>
+                                <small>{
+                                    user.code
+                                }</small>
+                            </div>
+                        </div>
 
                         {
                         user.role === 'Student' ? <div className="columns">

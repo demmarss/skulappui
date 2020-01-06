@@ -23,20 +23,19 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
     function handleSetMobile(e) { // if Student, search for parent, then use the parent info
         setMobile(e.target.value)
     }
-    function handleSetParentId(code) {
-        // search for parentCode
-        const parents = users.filter(user => user.role === "Parent")
-        const parent = parents.find(user => user.code === code )
 
-        if (parent !== undefined){
-            setParent(parent)
-            setParentId(parent._id)
+    function handleSetParent(mobile) {
+        const family = users.filter(user => user.mobile === mobile)
+        const userhere2 = family.length >= 1? family.find(user => user.role === "Parent" ): undefined
+        if (userhere2 !== undefined) {
+            setParent(userhere2)
+            setParentId(userhere2._id)
             setParentSearchStatus('success')
-        }else{
+
+        } else {
             setParentId('')
             setParentSearchStatus('failure')
         }
-                
     }
 
     function handleSetAddress(e) { // if Student, search for parent, then use the parent info
@@ -190,7 +189,7 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
                     <div className="column">
                         <div className="columns is-mobile">
                             <div className="column">
-                                <SearchBar Search={handleSetParentId}
+                                <SearchBar Search={handleSetParent}
                                     Status={parentSearchstatus}
                                     SetStatus={setParentSearchStatus}/>
                             </div>
@@ -200,12 +199,12 @@ export default function MySetUp({SetSuccess, users, creatUser, LearningCycle, Au
                                     <div className='columns'>
 
                                         <div className='column is-6'>
-                                            Parent  Code: 
+                                            Parent  name: 
                                         </div>
                                         <div className='column is-6'>
 
                                             <p className='title is-4'>
-                                            {parent.code}</p>
+                                            {parent.name}</p>
                                         </div>
 
                                     </div>
