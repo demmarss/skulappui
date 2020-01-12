@@ -2,13 +2,13 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode';
 
 
-// export const apiUrlForImages = 'http://localhost:5000'
-export const apiUrlForImages = 'http://olisiticlms.com/api'
+export const apiUrlForImages = 'http://localhost:5000'
+// export const apiUrlForImages = 'http://olisiticlms.com/api'
 
 
 
-// axios.defaults.baseURL = 'http://localhost:5000/api';
-axios.defaults.baseURL = 'http://olisiticlms.com/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
+// axios.defaults.baseURL = 'http://olisiticlms.com/api';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -205,8 +205,14 @@ export async function createTimeRecord(userId) {
  
  
  // Create payment
- export async function createPayment(userId) {
-   const response = await axios.post(`/payments`, userId);
+ export async function createPayment(payment) {
+   const response = await axios.post(`/payments`, payment);
+   return response.data;
+ }
+
+  // Create payment
+  export async function editPayment(payment) {
+   const response = await axios.put(`/payments`, payment);
    return response.data;
  }
 

@@ -3,7 +3,7 @@ import {PaymentContext} from '../../../contexts/PaymentContext'
 import SuccessMessage from './successMessage'
 import FailureMessage from './failureMessage'
 
-const date = new Date();export default function PaymentForm({user, Users}) {
+const date = new Date();export default function PaymentForm({user, Users, SetStatus, SettingPayment}) {
 
 const [amount, setAmount] = useState('')
 const [year, setYear] = useState(date.getFullYear())
@@ -27,9 +27,7 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-    if (isPayamentInitiate === false) {
-        return
-    }
+    if (isPayamentInitiate === false) {return}
 
     if (checkPaymentStatus()) {
         setPaymentStatus('success')
@@ -45,12 +43,20 @@ useEffect(() => {
 const month1 = ['January', 'February', 'March', 'April']
 const month2 = ['May', 'June', 'July', 'August']
 const month3 = ['September', 'October', 'November', 'December']
-const allMonths = [
-    ...month1,
-    ...month2,
-    ...month3
-]
+const allMonths = [...month1, ...month2, ...month3]
 
+
+function showPaymentEdit(month){
+    const isThisMonthPaidFor = paymentHistory.filter(x => x.monthPaidFor === month)
+    const isThisYearPaidFor = isThisMonthPaidFor.filter(x => x.yearPaidFor === year.toString())
+    // get payment 
+    const payment = isThisYearPaidFor[0]
+    
+    console.log('Payment.....', payment)
+    SettingPayment(payment)
+    // use it to showEditForm
+    SetStatus('editPayment')
+}
 
 function handleSubmitPayment() {
     let payment = {
@@ -61,7 +67,6 @@ function handleSubmitPayment() {
         monthPaidFor,
         year
     }
-
     // first send data to backend
     creatingPayment(payment)
     setPaymeInitiated(true)
@@ -84,10 +89,20 @@ function handleChangeMonth(month) {
     setMonthPaidFor(month)
 }
 
+function getPaymentHistory(year, month) { // check this month and year payment
+    const isThisMonthPaidFor = paymentHistory.filter(x => x.monthPaidFor === month)
+    const isThisYearPaidFor = isThisMonthPaidFor.filter(x => x.yearPaidFor === year.toString())
+    if (isThisYearPaidFor.length > 0) {
+        return isThisYearPaidFor[0].amount
+    } else {
+        return('UnPaid')
+    }
+}
+
 function monthPad(x) {
     return (
         <div className='column is-3'
-            key={x}>
+            key={x} onClick={()=>showPaymentEdit(x)}>
             <div className={
                 'box ' + setPaymentStatusColor(year, x)
             }>
